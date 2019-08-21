@@ -4,7 +4,7 @@
 
 This folder contains the main text for the Draft Best Practices Document
 
-* bp.adoc - the main Best Practice document with references to all sections
+* 19-XX_Best_Practices_for_encoding_CDB_vector_data.adoc - the main Best Practice document with references to all sections.  This where all the main dontent creation and editing work will be done.
 * remaining adocs - each section of the Best Practice document is in a separate document: follow directions in each document to populate
 * figures - figures go here
 * images - Image files for graphics go here. Image files for figures go in the "figures" directory. Only place in here images not used in figures (e.g., as parts of tables, as logos, etc.)

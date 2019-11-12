@@ -1,14 +1,15 @@
 == Conformance
-This Best Practice defines XXXX.
+This best practice defines [TBD] requirements / conformance classes.
 
-Requirements for N target types are considered:
-* AAAA
-* BBBB
+The standardization targets of all conformance classes are "GeoPackages in CDB Data Store".
+The main requirements class is:
 
-Conformance with this Best Practice shall be checked using all the relevant tests specified in Annex A (normative) of this document.
+Core. <<Add link to Annex A later>>
 
-In order to conform to this OGC® Best Practice, a software implementation shall choose to implement:
-* Any one of the conformance levels specified in Annex A (normative).
-* Any one of the Distributed Computing Platform profiles specified in Annexes TBD through TBD (normative).
+The Core specifies requirements that all GeoPackages that are to be stored in a CDB store that shall be implemented.
 
-All requirements-classes and conformance-classes described in this document are owned by the document(s) identified.
+Conformance with the standard and best practice shall be checked using all the relevant tests specified in Annex A (normative) of this document. The framework, concepts, and methodology for testing, and the criteria to be achieved to claim conformance are specified in the OGC Compliance Testing Policies and Procedures and the OGC Compliance Testing web site.
+
+In order to conform to this OGC® interface best practice, a software implementation shall choose to implement the conformance levels specified in Annex A (normative)
+
+All requirements-classes and conformance-classes described in this document are owned by the standard(s) identified.

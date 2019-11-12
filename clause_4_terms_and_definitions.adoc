@@ -24,7 +24,7 @@ a set of features from a dataset
 
 Note: In this standard, 'collection' is used as a synonym for 'feature collection'. This is done to make this document easier to understand for those that are not geo-experts. 
 
-===*Height*
+=== *height*
 Distance of a point from a chosen reference surface measured upward along a line perpendicular to that surface. [ISO 19111]
 
 Note 1 to entry: A height below the reference surface will have a negative value, which would embrace both gravity-related heights and ellipsoidal heights.

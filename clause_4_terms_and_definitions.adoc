@@ -3,5 +3,59 @@ This document uses the terms defined in Sub-clause 5.3 of [OGC 06-121r8], which 
 
 For the purposes of this document, the following additional terms and definitions apply.
 
-=== *term name*
-text of the definition
+=== *coordinate reference system*
+coordinate system that is related to the real world by a datum [ISO 19111]
+
+=== *coordinate system*
+set of mathematical rules for specifying how coordinates are to be assigned to points [ISO 19111]
+
+=== *dataset*
+collection of data, published or curated by a single agent, and available for access or download in one or more formats [DCAT]
+
+Note: The use of 'collection' in the definition from [DCAT] is broader than the use of the term collection in this standard. See the definition of feature collection. 
+
+=== *feature*
+abstraction of real world phenomena [ISO 19101-1:2014]
+
+Note: If you are unfamiliar with the term 'feature', the explanations on Spatial Things, Features and Geometry in the W3C/OGC Spatial Data on the Web Best Practice document provide more detail. 
+
+=== *feature collection; collection*
+a set of features from a dataset
+
+Note: In this standard, 'collection' is used as a synonym for 'feature collection'. This is done to make this document easier to understand for those that are not geo-experts. 
+
+===*Height*
+Distance of a point from a chosen reference surface measured upward along a line perpendicular to that surface. [ISO 19111]
+
+Note 1 to entry: A height below the reference surface will have a negative value, which would embrace both gravity-related heights and ellipsoidal heights.
+
+=== *linestring*
+curve composed of straight-line segments (aka line) [ISO 19136:2007]
+
+=== *point*
+0-dimensional geometric primitive, representing a position [ISO 19136:2007]
+
+Note to entry: The boundary of a point is the empty set.
+
+=== *polygon*
+planar surface defined by 1 exterior boundary and 0 or more interior boundaries [ISO 19136:2007]
+
+=== *GeoPackage file*
+a platform-independent SQLite database file that contains GeoPackage data and metadata tables with specified definitions, integrity assertions, format limitations and content constraints.
+
+=== *tile*
+a geometric shape with known properties that is the result of the tiling (tessellation) of a plane. A tile consists of a single connected "piece" without "holes" or "lines" (topological disc).
+
+=== *Valid GeoPackage*
+A GeoPackage that contains features per clause Features and/or tiles per clause Tiles and row(s) in the gpkg_contents table with data_type column values of "features" and/or "tiles" describing the user data tables.
+
+=== *vector and vector data*
+quantity having direction as well as magnitude
+
+Note to entry: A directed line segment represents a vector if the length and direction of the line segment are equal to the magnitude and direction of the vector. The term vector data refers to data that represents the spatial configuration of features as a set of directed line segments. [ISO 19123:2005]
+
+=== *vector geometry*
+representation of geometry through the use of constructive geometric primitives [ISO 19107:2003]
+
+=== *Version*
+A collection of pure CDB Datasets and/or user-defined datasets. Please see section 3.2 of Volume 1: OGC CDB Core Standard: Model and Physical Data Store Structure for details on the CDB versioning strategy and structure.

@@ -3,6 +3,7 @@
 OGC CDB and GeoPackage are both standards increasingly used in M&S and GEOINT, but they both contain weaknesses and strengths when it comes to the combined needs of both industries. The combined technology of GeoPackage and OGC CDB is hoped to be a deterministic repository of easily read geospatial datasets suitable for storage, runtime access, and dissemination for live, virtual, constructive, gaming, and Mission Command (MC) systems. The use of CDB raised concerns in both industries because it utilizes Esri Shapefiles and Presagis OpenFlight, both of which are now open standards but were once proprietary. The primary issue is that Shapefiles leverage the dBase IV format to store feature attribution. To address the limitations of ESRI Shapefiles within CDB, potential designs were explored to integrate OGC GeoPackage with OGC CDB. GeoPackage technology was designed to ensure Mobile / Handheld devices could interoperate with systems within the larger Command Post and U.S. Army Enterprise. Current Geopackage adaptations can natively store 3D information, routing information, various types of data ‘tiles’, and other geographically related datasets.  An implementation of OGC GeoPackage within CDB aligns CDB vector data storage with the U.S. Army architecture.
 
 Four approaches were testing in the Interoperability Experiment:
+
 • Experiment 1: Conversion of Shapefiles in one or more CDB data stores into GeoPackages as required for Experiments 2, 3, and/or 4.
 • Experiment 2: One-to-one conversion of a Shapefile into a GeoPackage.
 • Experiment 3: Store each CDB Level of Detail (LOD) as a layer in GeoPackage.
@@ -11,6 +12,7 @@ Four approaches were testing in the Interoperability Experiment:
 Experiment 2 was further broken down into Options 1a – 1d. Each experiment offered its own set of potential advantages, disadvantages, and lessons learned. 
 
 Utilizing Option 1c:
+
 •	Fully flattened instance, class, and extended level attribute tables
 •	There is a 4:1 to 7:1 reduction in the number of files.
 •	Some duplication of data, resulting in larger files.
@@ -20,6 +22,7 @@ Utilizing Option 1c:
 •	Best Experiment 2 option in terms of file size and performance time.
 
 Utilizing Option 1d:
+
 •	Flatten CDB standard instance and class attribute – maximum GIS tools compatibility
 •	“Off the Shelf” GeoPackage software compatibility for CDB standard attributes.
 •	Table for extended attributes using Related Tables GeoPackage extension

@@ -66,7 +66,7 @@ Table 3: Basic Filename Structure
 [options="header"]
 |===
 |Latitude |	Longitude	|	Dataset Code	|	Selector (CS1)	|	Selector 2 (CS2)	|	LOD |	UREF | RREF
-|N13	| E045	| _D	| 201	| _S	| 002	| _T_	| 003	| _L	| 00	| _U	| 0	| _R	| 0
+|N13	| E045	| _D	| 201	| _S	| 002	| _T | 003	| _L	| 00	| _U	| 0	| _R	| 0
 |===
 
 Figure 2 shows the flattened schema with filenames as they might appear for a road dataset.  The feature and extended attribute tables are shown contained within the GeoPackage file.

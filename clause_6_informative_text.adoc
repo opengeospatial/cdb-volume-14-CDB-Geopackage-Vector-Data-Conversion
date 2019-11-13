@@ -1,9 +1,59 @@
-== Clauses not Containing Normative Material
+== Results from Interoperability Experiments
 
-Paragraph
+OGC CDB and GeoPackage are both standards increasingly used in M&S and GEOINT, but they both contain weaknesses and strengths when it comes to the combined needs of both industries. The combined technology of GeoPackage and OGC CDB is hoped to be a deterministic repository of easily read geospatial datasets suitable for storage, runtime access, and dissemination for live, virtual, constructive, gaming, and Mission Command (MC) systems. The use of CDB raised concerns in both industries because it utilizes Esri Shapefiles and Presagis OpenFlight, both of which are now open standards but were once proprietary. The primary issue is that Shapefiles leverage the dBase IV format to store feature attribution. To address the limitations of ESRI Shapefiles within CDB, potential designs were explored to integrate OGC GeoPackage with OGC CDB. GeoPackage technology was designed to ensure Mobile / Handheld devices could interoperate with systems within the larger Command Post and U.S. Army Enterprise. Current Geopackage adaptations can natively store 3D information, routing information, various types of data ‘tiles’, and other geographically related datasets.  An implementation of OGC GeoPackage within CDB aligns CDB vector data storage with the U.S. Army architecture.
 
-=== Clauses not containing normative material sub-clause 1
+Four approaches were testing in the Interoperability Experiment:
+• Experiment 1: Conversion of Shapefiles in one or more CDB data stores into GeoPackages as required for Experiments 2, 3, and/or 4.
+• Experiment 2: One-to-one conversion of a Shapefile into a GeoPackage.
+• Experiment 3: Store each CDB Level of Detail (LOD) as a layer in GeoPackage.
+• Experiment 4: Store each Geocell of Vector Data as a layer in GeoPackage.
 
-Paragraph
+Experiment 2 was further broken down into Options 1a – 1d. Each experiment offered its own set of potential advantages, disadvantages, and lessons learned. 
 
-=== Clauses not containing normative material sub-clause 2
+Utilizing Option 1c:
+•	Fully flattened instance, class, and extended level attribute tables
+•	There is a 4:1 to 7:1 reduction in the number of files.
+•	Some duplication of data, resulting in larger files.
+•	There is one layer per GeoPackage.
+•	The Feature Class and Extended Attributes are populated for each feature.
+•	Full “Off the Shelf” GeoPackage software compatibility.
+•	Best Experiment 2 option in terms of file size and performance time.
+
+Utilizing Option 1d:
+•	Flatten CDB standard instance and class attribute – maximum GIS tools compatibility
+•	“Off the Shelf” GeoPackage software compatibility for CDB standard attributes.
+•	Table for extended attributes using Related Tables GeoPackage extension
+•	This approach utilizes a standard normalized relational database design, utilizing foreign keys.
+•	Some duplication of data, resulting in larger files.
+•	There is one layer per GeoPackage.
+•	The Feature Class and Extended Attributes are populated for each feature.
+
+The final method selected for conversion of a Shapefile CDB to a GeoPackage CDB is a hybrid of Options 1c and 1d. Because “Off the Shelf” GeoPackage software will not be aware of the class and extended level attributes, we needed to “flatten” the class level attributes with the instance level attributes.  It was not possible to effectively flatten the extended level attributes at this time, and those will remain in a separate table with regular table relationships.  The decision was made not to use the Related Tables GeoPackage extension.
+
+Several observations were made during the experiments.  The output created by the recommended method of conversion allows backward compatibility. However, the GeoPackage CDB results in larger size on disk, which could be problematic. The GeoPackage format (especially as outputted by GDAL) is very space inefficient
+when it comes to encoding tiles with small quantities of data.  But it does reduce the total number of files on disk significantly and eliminates the occurrence of dBase files containing 0 KB.
+
+For more details on the experiments and information above, please see the OGC CDB Vector Data in GeoPackage Interoperability Experiment Engineering Report.
+
+== Guidance on the use of GeoPackages
+
+An GeoPackage is an open, standards-based, platform-independent, portable, self-describing, compact format for transferring geospatial information. It is a platform-independent SQLite database file. The GeoPackage specification was developed by OGC.  This document describes the encoding of Vector Data in GeoPackage only.
+
+Per Requirement 4 of the CDB Vector GeoPackage Extension, the position of all points is expressed using WGS-84 geographic coordinates (latitude, longitude, altitude), as explained in Volume 8: CDB Spatial Reference Systems Guidance.
+
+As detailed in the following table of GeoPackage Geometry Codes(Table 30 of Appendix G of the OGC GeoPackage Specification), the following geometry types are supported in GeoPackage:
+
+[options="header",]
+|===
+|*Code* |*Name*
+|0 | GEOMETRY
+|1 | POINT 
+|2 | LINESTRING 
+|3 | POLYGON
+|4 | MULTIPOIPNT
+|5 | MULTILINESTRING
+|6 | MULTIPOLYGON
+|7 | GEOMETRYCOLLECTION
+|===
+
+Per Requirement 2 of the CDB Vector GeoPackage Extension, while the GeoPackage model supports encoding of 8 different types that can be stored in the same GeoPackage, the CDB standard requires a maximum of 3 feature geometry types per tile.

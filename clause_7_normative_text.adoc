@@ -1,26 +1,72 @@
-== Clause containing normative material
-Paragraph
+== Flattening the Schema
+The CDB Shapefile standard provides three attribution schemas to represent attribution data.  Those three have been flattened into two for use with GeoPackage.  
 
-=== Requirement Class A or Requirement A Example
-Paragraph – intro text for the requirement class.
+•	Instance-level attribution schema
+•	Extended-level attribution schema
 
-Use the following table for Requirements Classes.
+As CNAM in the CDB Shapefile schema was only used as a relationship field, it has been removed from the flattened schema. Figure 1 shows the flattened schema.
 
-include::requirements/requirements_class.adoc[]
+All of the information that is needed to instance features is organized in accordance to the CDB tile structure.  All the tiled GeoPackage dataset files are located in the same directory. The dataset’s second component selector (CS2) is used to differentiate between files with the same extension or with the same Vector features.  Table 1: Component Selector 2 for Vector Dataset, presents the list of codes that are allocated.  Note that Vector datasets do not necessarily use all of the Dataset Component Selector 2 reserved codes.  Users of the CDB standard should refer to the appropriate section for an enumeration of the supported File Component Selector 2 codes as well as the ones specific to the Dataset.
 
-==== Requirement 1
-Paragraph - intro text for the requirement.
+The Vector dataset concept and the feature code concepts overlap somewhat; some of the Vector datasets are generalizations or specializations of feature codes.  Note that the same feature should not have two representations.
 
-Use the following table for Requirements, number sequentially.
-
-include::requirements/requirement.adoc[]
-
-Dictionary tables for requirements can be added as necessary. Modify the following example as needed.
-
-[width="90%",options="header"]
+Table 1: Component Selector 2 for Vector Dataset File Names
+[option="header"]
 |===
-|Names |Definition |Data types and values |Multiplicity and use
-|name 1 |definition of name 1 |float |One or more (mandatory)
-|name 2 |definition of name 2 |character string type, not empty |Zero or one (optional)
-|name 3 |definition of name 3 |GML:: Point PropertyType |One (mandatory)
+|*CS2* | *File Extension* |	*Dataset Component Name* |	*Supported Shape Type*
+|001	| *.gpkg |	Point features	| Point, PointZ, PointM, MultiPoint, MultiPointZ, MultiPointM
+|002	| *.gpkg	| Lineal features	| PolyLine, PolyLineZ, PolyLineM
+|003	| *.gpkg	| Polygon features	| Polygon, PolygonZ, PolygonM, Multipatch
+|004	| *.gpkg	| Lineal figure point features	| Point, PointZ, PointM, MultiPoint, MultiPointZ, MultiPointM
+|005	| *.gpkg	| Polygon figure point features	| Point, PointZ, PointM, MultiPoint, MultiPointZ, MultiPointM
+|006	| *.gpkg	| 2D relationship tile connections	| N/A
+|007	| *.gpkg	| 2D relationship dataset connections	| N/A
 |===
+
+Table 2: Component Selector 2 for Vector Dataset Table Names
+[options="header"]
+|===
+|*CS2* | *Dataset Component Name* | *Supported Shape Type*
+|001	| Point features |	Point, PointZ, PointM, MultiPoint, MultiPointZ, MultiPointM
+|002	| Point feature class-level attributes	| N/A
+|003	| Lineal features	| PolyLine, PolyLineZ, PolyLineM
+|004	| Lineal feature class-level attributes	| N/A
+|005	| Polygon features	| Polygon, PolygonZ, PolygonM, Multipatch
+|006	| Polygon feature class-level attributes	| N/A
+|007	| Lineal figure point features	| Point, PointZ, PointM, MultiPoint, MultiPointZ, MultiPointM
+|008	| Lineal figure point feature class-level attributes	| N/A
+|009	| Polygon figure point features	| Point, PointZ, PointM, MultiPoint, MultiPointZ, MultiPointM
+|010	| Polygon figure point feature class-level attributes	| N/A
+|011	| 2D relationship tile connections	| N/A
+|012	| Deprecated	| N/A
+|013	| Deprecated	| N/A
+|014	| Deprecated	| N/A
+|015	| 2D relationship dataset connections	| N/A
+|016	| Point feature extended-level attributes	| N/A
+|017	| Lineal feature extended-level attributes	| N/A
+|018	| Polygon feature extended-level attributes	| N/A
+|019	| Lineal Figure Point extended-level attributes	| N/A
+|020	| Polygon Figure Point extended-level attributes	| N/A
+|===
+
+== Layer Names within a GeoPackage
+
+Each GeoPackage file shall contain one and only one feature table. The feature table shall include all attributes (fields) required by the CDB standard (Volume 1, 5.7.1.2. CDB Attribution). The single feature table shall be named identically to the GeoPackage filename (not including the ".gpkg" filename extension). A GeoPackage file may include an optional extended level attribute table. The extended level attribute table shall not contain geometry. The name of the extended level attribute table shall use the CS2 selector shown in Table 2.
+
+The example below and Table 3 show the filename structure for a road feature.
+GeoPackage Filename: N13E045_D201_S002_T003_L00_U0_R0.gpkg
+Feature Table Name: N13E045_D201_S002_T003_L00_U0_R0
+Extended Attribute Table Name: N13E045_D201_S002_T017_L00_U0_R0
+
+Filename: N13E045_D201_S002_T003_L00_U0_R0.gpkg
+Feature Filename: N13E045_D201_S002_T003_L00_U0_R0.gpkg
+Extended Attributes Filename: N13E045_D201_S002_T017_L00_U0_R0.gpkg 
+
+Table 3: Basic Filename Structure
+[options="header"]
+|===
+|Latitude |	Longitude	|	Dataset Code	|	Selector (CS1)	|	Selector 2 (CS2)	|	LOD |	UREF | RREF
+|N13	| E045	| _D	| 201	| _S	| 002	| _T_	| 003	| _L	| 00	| _U	| 0	| _R	| 0
+|===
+
+Figure 2 shows the flattened schema with filenames as they might appear for a road dataset.  The feature and extended attribute tables are shown contained within the GeoPackage file.

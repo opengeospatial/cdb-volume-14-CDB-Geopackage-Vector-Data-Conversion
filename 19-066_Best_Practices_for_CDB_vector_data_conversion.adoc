@@ -1,4 +1,4 @@
-:Title: OGC (add title text)
+:Title: OGC Best Practices for Conversion of CDB Vector Data to Geopackage
 :titletext: {Title}
 :doctype: book
 :encoding: utf-8
@@ -8,7 +8,7 @@
 :toclevels: 3
 :numbered:
 :sectanchors:
-:source-highlighter: pygments
+:source-highlighter: coderay
 
 <<<
 [cols = ">",frame = "none",grid = "none"]
@@ -19,10 +19,10 @@
 |Approval Date:   <yyyy-mm-dd>
 |Publication Date:   <yyyy-mm-dd>
 |External identifier of this OGC(R) document: http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}
-|Internal reference number of this OGC(R) document:    YY-nnnrx
+|Internal reference number of this OGC(R) document:    19-066
 |Version: n.n
 |Category: OGC(R) Best Practice
-|Editor:   <Name(s) of Editor or Editors>
+|Editor:   Michala Hill
 |===
 
 [cols = "^", frame = "none"]

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>OGC (add title text)</title>
+<title>OGC Best Practices for Conversion of CDB Vector Data to Geopackage</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -467,7 +467,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">External identifier of this OGC&#174; document: <a href="http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}" class="bare">http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Internal reference number of this OGC&#174; document:    YY-nnnrx</p></td>
+<td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Internal reference number of this OGC&#174; document:    19-066</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Version: n.n</p></td>
@@ -476,7 +476,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Category: OGC&#174; Best Practice</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Editor:   &lt;Name(s) of Editor or Editors&gt;</p></td>
+<td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Editor:   Michala Hill</p></td>
 </tr>
 </tbody>
 </table>
@@ -486,7 +486,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><strong class="big">OGC (add title text)</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><strong class="big">OGC Best Practices for Conversion of CDB Vector Data to Geopackage</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -1057,10 +1057,15 @@ when it comes to encoding tiles with small quantities of data.  But it does redu
 </ul>
 </div>
 <div class="paragraph">
-<p>As CNAM in the CDB Shapefile schema was only used as a relationship field, it has been removed from the flattened schema. Figure 1 shows the flattened schema.</p>
+<p>As CNAM in the CDB Shapefile schema was only used as a relationship field, it has been removed from the flattened schema. Figure 1 shows the flattened instance and class-level attributes, and how the extended attributes link to a feature. I_CEAI, I_GEAI, and I_VEAI are all instance-level attributes and are linked to a specific feature.  C_CEAI, C_GEAI, and C_VEAI are all class-level attributes and are linked to all features in a layer.</p>
 </div>
 <div class="paragraph">
-<p>All of the information that is needed to instance features is organized in accordance to the CDB tile structure.  All the tiled GeoPackage dataset files are located in the same directory. The dataset’s second component selector (CS2) is used to differentiate between files with the same extension or with the same Vector features.  Table 1: Component Selector 2 for Vector Dataset, presents the list of codes that are allocated.  Note that Vector datasets do not necessarily use all of the Dataset Component Selector 2 reserved codes.  Users of the CDB standard should refer to the appropriate section for an enumeration of the supported File Component Selector 2 codes as well as the ones specific to the Dataset.</p>
+<p>Example:
+Record ID 4 in the extended-level attributes table is related to record ID 1 in the linear features table and is an instance-level attribute.  Record IDs 5 and 8 are also linked to record ID 4, and all apply to the same linear feature.  Note that a 0 in the LNK column denotes the end of the applicable record list.
+Record 9 in the extended-level attributes table is a class-level attribute related to all features that are present in the highway layer.</p>
+</div>
+<div class="paragraph">
+<p>All of the information that is needed to instance features is organized in accordance to the CDB tile structure.  All the tiled GeoPackage dataset files are located in the same directory. The dataset’s second component selector (CS2) is used to differentiate between files with the same extension or with the same Vector features.  Table 1 presents the list of codes that are allocated.  Note that Vector datasets do not necessarily use all of the Dataset Component Selector 2 reserved codes.  Users of the CDB standard should refer to the appropriate section for an enumeration of the supported File Component Selector 2 codes as well as the ones specific to the Dataset.</p>
 </div>
 <div class="paragraph">
 <p>The Vector dataset concept and the feature code concepts overlap somewhat; some of the Vector datasets are generalizations or specializations of feature codes.  Note that the same feature should not have two representations.</p>
@@ -1251,21 +1256,69 @@ when it comes to encoding tiles with small quantities of data.  But it does redu
 <h2 id="_layer_names_within_a_geopackage"><a class="anchor" href="#_layer_names_within_a_geopackage"></a>9. Layer Names within a GeoPackage</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Each GeoPackage file shall contain one and only one feature table. The feature table shall include all attributes (fields) required by the CDB standard (Volume 1, 5.7.1.2. CDB Attribution). The single feature table shall be named identically to the GeoPackage filename (not including the ".gpkg" filename extension). A GeoPackage file may include an optional extended level attribute table. The extended level attribute table shall not contain geometry. The name of the extended level attribute table shall use the CS2 selector shown in Table 2.</p>
+<p>Each GeoPackage file shall contain one and only one feature table. The feature table shall include all attributes (fields) required by the CDB standard (Volume 1, 5.7.1.2. CDB Attribution). The single feature table shall be named identically to the GeoPackage filename (not including the ".gpkg" filename extension). A GeoPackage file may include an optional extended level attribute table. The extended level attribute table shall not contain geometry. The name of the extended level attribute table shall use the CS2 selector shown in Table 2. Table 3 shows the file naming convention.</p>
 </div>
 <div class="paragraph">
-<p>The example below and Table 3 show the filename structure for a road feature.
+<p>Table 3: Tiled Dataset File Naming Convention 1</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Field</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Lat</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Geocell Latitude – Identical to the name of the directory defined in section 3.6.2.1, Directory Level 1 (Latitude Directory).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Lon</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Geocell Longitude – Identical to the name of the directory defined in section 3.6.2.2, Directory Level 2 (Longitude Directory).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Dnnn</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Character D followed by the 3-digit code assigned to the dataset.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Snnn</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Character S followed by the 3-digit value of Component Selector 1.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Tnnn</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Character T followed by the 3-digit value of Component Selector 2.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">LOD</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Level of Detail – As defined in section 3.3.8.5, Level of Detail.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Un</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">UREF – Identical to the name of the directory as defined in section 3.6.2.5, Directory Level 5 (UREF Directory).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Rn</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">RREF – A reference to the Right Index of a tile. Character R (Right direction) followed by the column number as described in this section.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">xxx</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">File extension as per file type.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The example below and Table 4 show the filename structure for a road feature.
 GeoPackage Filename: N13E045_D201_S002_T003_L00_U0_R0.gpkg
 Feature Table Name: N13E045_D201_S002_T003_L00_U0_R0
 Extended Attribute Table Name: N13E045_D201_S002_T017_L00_U0_R0</p>
 </div>
 <div class="paragraph">
-<p>Filename: N13E045_D201_S002_T003_L00_U0_R0.gpkg
-Feature Filename: N13E045_D201_S002_T003_L00_U0_R0.gpkg
-Extended Attributes Filename: N13E045_D201_S002_T017_L00_U0_R0.gpkg</p>
-</div>
-<div class="paragraph">
-<p>Table 3: Basic Filename Structure</p>
+<p>Table 4: Basic Filename Structure</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1459,7 +1512,7 @@ Place other Annex material in sequential annexes beginning with "B" and leave fi
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-14 16:05:36 -0500
+Last updated 2019-11-19 10:02:40 -0500
 </div>
 </div>
 <script type="text/x-mathjax-config">

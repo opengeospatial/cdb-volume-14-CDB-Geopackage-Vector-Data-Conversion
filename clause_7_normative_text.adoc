@@ -90,7 +90,7 @@ Table 4: Basic Filename Structure
 
 Figure 2 shows the flattened schema with filenames as they might appear for a road dataset.  The feature and extended attribute tables are shown contained within the GeoPackage file.
 
-figure::figures/fig2.png[image,width=514,height=121]
+figure::figures/fig2.png[figure,width=514,height=121]
 [#img_CDBGpkgFlattenedSchemaforRoads,reftext='{figure-caption} {counter:figure-num}']
 *{figure-caption}{counter:figure-num}. CDB GeoPackage Flattened Schema Road Dataset Example*
 

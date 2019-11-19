@@ -4,9 +4,9 @@ The CDB Shapefile standard provides three attribution schemas to represent attri
 •	Instance-level attribution schema
 •	Extended-level attribution schema
 
-As CNAM in the CDB Shapefile schema was only used as a relationship field, it has been removed from the flattened schema. Figure 1 shows the flattened instance and class-level attributes, and how the extended attributes link to a feature. I_CEAI, I_GEAI, and I_VEAI are all instance-level attributes and are linked to a specific feature.  C_CEAI, C_GEAI, and C_VEAI are all class-level attributes and are linked to all features in a layer.  
+As CNAM in the CDB Shapefile schema was only used as a relationship field, it has been removed from the flattened schema. Figure 1 shows the flattened instance and class-level attributes, and how the extended attributes link to a feature. I_CEAI, I_GEAI, and I_VEAI are all instance-level attributes and are linked to a specific feature.  C_CEAI, C_GEAI, and C_VEAI are all class-level attributes and are linked to all features in a layer.
 
-figure::figures/fig1.png[image,width=514,height=121]
+image::figures/Fig1.PNG[figure,width=600,height=575]
 [#img_CDBGpkgFlattenedSchema,reftext='{figure-caption} {counter:figure-num}']
 *{figure-caption}{counter:figure-num}. CDB GeoPackage Flattened Schema*
 
@@ -90,7 +90,7 @@ Table 4: Basic Filename Structure
 
 Figure 2 shows the flattened schema with filenames as they might appear for a road dataset.  The feature and extended attribute tables are shown contained within the GeoPackage file.
 
-figure::figures/fig2.png[figure,width=514,height=121]
+image::figures/Fig2.PNG[figure,width=600,height=200]
 [#img_CDBGpkgFlattenedSchemaforRoads,reftext='{figure-caption} {counter:figure-num}']
 *{figure-caption}{counter:figure-num}. CDB GeoPackage Flattened Schema Road Dataset Example*
 

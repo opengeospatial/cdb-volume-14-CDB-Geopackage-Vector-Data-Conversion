@@ -77,8 +77,8 @@ Table 3: Tiled Dataset File Naming Convention 1
 |===
 
 The example below and Table 4 show the filename structure for a road feature.
-GeoPackage Filename: N13E045_D201_S002_T003_L00_U0_R0.gpkg
-Feature Table Name: N13E045_D201_S002_T003_L00_U0_R0
+GeoPackage Filename: N13E045_D201_S002_T003_L00_U0_R0.gpkg +
+Feature Table Name: N13E045_D201_S002_T003_L00_U0_R0 +
 Extended Attribute Table Name: N13E045_D201_S002_T017_L00_U0_R0
 
 Table 4: Basic Filename Structure

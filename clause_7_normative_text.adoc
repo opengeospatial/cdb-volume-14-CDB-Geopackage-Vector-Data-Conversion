@@ -84,8 +84,8 @@ Extended Attribute Table Name: N13E045_D201_S002_T017_L00_U0_R0
 Table 4: Basic Filename Structure
 [options="header"]
 |===
-|N13	| E045	| _D	| 201	| _S	| 002	| _T | 003	| _L	| 00	| _U	| 0	| _R	| 0
-|Latitude |	Longitude	|	| Dataset Code |	|	Selector (CS1)	| |	Selector 2 (CS2)	| |	LOD | |	UREF | | RREF
+|N13	| E045	| D201	| S002	| T003	| L00	| U0	| R0
+|Latitude |	Longitude	| Dataset Code | Selector (CS1)	| Selector 2 (CS2)	| LOD |	UREF | RREF
 |===
 
 Figure 2 shows the flattened schema with filenames as they might appear for a road dataset.  The feature and extended attribute tables are shown contained within the GeoPackage file.

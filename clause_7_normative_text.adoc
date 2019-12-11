@@ -94,7 +94,7 @@ image::figures/Fig2.PNG[figure,width=600,height=200]
 [#img_CDBGpkgFlattenedSchemaforRoads,reftext='{figure-caption} {counter:figure-num}']
 *{figure-caption}{counter:figure-num}. CDB GeoPackage Flattened Schema Road Dataset Example*
 
-==Sample Conversion Tools
+== Sample Conversion Tools
 Sample conversion tools may be found in the Cognitics GitHub repo located at https://github.com/Cognitics/cdb-shp-geopackage-convert.
 
 *Warning: Use the sample conversion code at your own risk. It is intended to provide an example on how to convert Shapefiles to GeoPackage in a CDB, and is not an OGC tested application. Make sure you test on a backup copy of your CDB first.*
@@ -117,13 +117,12 @@ Next, the index file is scanned, and each ShapeFile is processed through:
 
     copyFeaturesFromShapeToGeoPackage(shpFilename,outputGeoPackageFile)
 
-If the shapefile passed through this function is a feature file, and not a feature class or extended attribute file, the appropriate feature class and extended attributes DBF file (based on selector2 in the filename) is ready by calling readDBF. All records in each file are read and stored in a dictionary.
+If the shapefile passed through this function is a feature file, and not a feature class or extended attribute file, the appropriate feature class and extended attributes DBF file (based on Selector2 in the filename) is ready by calling readDBF. All records in each file are read and stored in a dictionary.
 
-Next, GDAL is used to create the appropriate GeoPackage file and layers.Then GDAL is used to open the ShapeFile and iterate through each feature. To flatten the feature class records, as each feature is read, any matching feature class records (based on the CNAM attribute) are added to the feature record.
+Next, GDAL is used to create the appropriate GeoPackage file and layers. Then GDAL is used to open the ShapeFile and iterate through each feature. To flatten the feature class records, as each feature is read, any matching feature class records (based on the CNAM attribute) are added to the feature record.
 
 After copyFeaturesFromShapeToGeoPackage has completed, the extended attribute DBF file that matches the feature file is read. The appropriate layer is created in the GeoPackage. The name of that layer is identical to the filename of the extended attribute DBF file, without the .dbf extension. Each record in the extended attribute DBF file is read and added to the new layer in the GeoPackage. Each record from the DFB file is copied into the GeoPackage layer.
 
-Note that no additional relationships or foreign keys are necessary as the feature attributes are needed in the GeoPackage as the same attributes from the ShapeFile (CEAI,GEAI, and VEAI as shown in Figure 1) are used to link the features to the extended attributes in the GeoPackage file.
+Note that no additional relationships or foreign keys are necessary. The feature attributes that are used to link the features to the Extended Attributes in the GeoPackage are the same as the attributes from the ShapeFile (CEAI,GEAI, and VEAI) and have been renamed to indicate either the Instance or Class level (see Figure 1 in section above on Flattening the Schema).
 
-After each feature ShapeFile has been processed, the conversion is complete. Note that none of the files associated ShapeFile or DBF files are removed from the CDB.
-
+After each feature ShapeFile has been processed, the conversion is complete. Note that none of the associated ShapeFile or DBF files are removed from the CDB.

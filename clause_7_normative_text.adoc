@@ -93,3 +93,6 @@ Figure 2 shows the flattened schema with filenames as they might appear for a ro
 image::figures/Fig2.PNG[figure,width=600,height=200]
 [#img_CDBGpkgFlattenedSchemaforRoads,reftext='{figure-caption} {counter:figure-num}']
 *{figure-caption}{counter:figure-num}. CDB GeoPackage Flattened Schema Road Dataset Example*
+
+:hide-uri-scheme:
+See https://github.com/opengeospatial/Draft-Best-Practices-Document-Geopackage-Vector-Data-Conversion/blob/master/annex-n.adoc[Annex A: Sample Conversion Tools] for information on the use of sample conversion tools found in the https://github.com/Cognitics/cdb-shp-geopackage-convert[Cognitics GitHub repo].

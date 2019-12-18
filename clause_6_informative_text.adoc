@@ -60,3 +60,36 @@ As detailed in the following table of GeoPackage Geometry Codes(Table 30 of Appe
 |===
 
 Per Requirement 2 of the CDB Vector GeoPackage Extension, while the GeoPackage model supports encoding of 8 different types that can be stored in the same GeoPackage, the CDB standard requires a maximum of 3 feature geometry types per tile.
+
+== Sample Conversion Tools
+Sample conversion tools may be found in the Cognitics GitHub repo located at https://github.com/Cognitics/cdb-shp-geopackage-convert.
+
+*Warning: Use the sample conversion code at your own risk. It is intended to provide an example on how to convert Shapefiles to GeoPackage in a CDB, and is not an OGC tested application. Make sure you test on a backup copy of your CDB first.*
+
+The sample converter is written in Python, and uses GDAL (version 2.2.3 or greater) with the Python bindings. Binaries of GDAL can be found at https://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries.
+
+To use the sample converter tool, use the following Syntax:
+
+    Usage: Convert.py <Input Root CDB Directory> <Output Directory for GeoPackage Files>
+
+The converter starts by calling the function:
+
+    generateMetaFiles.generateMetaFiles(cDBRoot)
+
+This function scans the CDB to find a list of Shapefiles. It stores a list of all Shapefiles in a file called shapeindex.py. Another file named shapemeta.py is generated with a list of shapefiles and the extents of each file. 
+
+The shapemeta.py file is not necessary for the conversion, but can be useful for analysis. That block of code can be removed for a faster conversion if it isn't needed.
+
+Next, the index file is scanned, and each ShapeFile is processed through:
+
+    copyFeaturesFromShapeToGeoPackage(shpFilename,outputGeoPackageFile)
+
+If the shapefile passed through this function is a feature file, and not a feature class or extended attribute file, the appropriate feature class and extended attributes DBF file (based on Selector2 in the filename) is ready by calling readDBF. All records in each file are read and stored in a dictionary.
+
+Next, GDAL is used to create the appropriate GeoPackage file and layers. Then GDAL is used to open the ShapeFile and iterate through each feature. To flatten the feature class records, as each feature is read, any matching feature class records (based on the CNAM attribute) are added to the feature record.
+
+After copyFeaturesFromShapeToGeoPackage has completed, the extended attribute DBF file that matches the feature file is read. The appropriate layer is created in the GeoPackage. The name of that layer is identical to the filename of the extended attribute DBF file, without the .dbf extension. Each record in the extended attribute DBF file is read and added to the new layer in the GeoPackage. Each record from the DFB file is copied into the GeoPackage layer.
+
+Note that no additional relationships or foreign keys are necessary. The feature attributes that are used to link the features to the Extended Attributes in the GeoPackage are the same as the attributes from the ShapeFile (CEAI,GEAI, and VEAI) and have been renamed to indicate either the Instance or Class level (see Figure 1 in the Flattening the Schema of the Normative document).
+
+After each feature ShapeFile has been processed, the conversion is complete. Note that none of the associated ShapeFile or DBF files are removed from the CDB.

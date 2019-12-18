@@ -596,9 +596,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_results_from_interoperability_experiments">6. Results from Interoperability Experiments</a></li>
 <li><a href="#_guidance_on_the_use_of_geopackages">7. Guidance on the use of GeoPackages</a></li>
-<li><a href="#_flattening_the_schema">8. Flattening the Schema</a></li>
-<li><a href="#_layer_names_within_a_geopackage">9. Layer Names within a GeoPackage</a></li>
-<li><a href="#_sample_conversion_tools">10. Sample Conversion Tools</a></li>
+<li><a href="#_sample_conversion_tools">8. Sample Conversion Tools</a></li>
+<li><a href="#_flattening_the_schema">9. Flattening the Schema</a></li>
+<li><a href="#_layer_names_within_a_geopackage">10. Layer Names within a GeoPackage</a></li>
 <li><a href="#_conformance_class_abstract_test_suite_normative">Annex A: Conformance Class Abstract Test Suite (Normative)</a>
 <ul class="sectlevel2">
 <li><a href="#_conformance_class_a">A.1. Conformance Class A</a>
@@ -688,7 +688,7 @@ Attention is drawn to the possibility that some of the elements of this document
 <p>This document discusses the results and conclusions of the Interoperability Experiment conducted to determine the optimal use of GeoPackage in CDB, assuming relatively minor changes to the CDB current standard.  It also offers general guidance on the use of GeoPackage in CDB, with details on the flattened attribute schema.</p>
 </div>
 <div class="paragraph">
-<p>Before reading this standard, please remember that the idea is to restrict the encoding of a dataset to a single vector format per CDB Version. Since a “CDB” is made of one or more “Versions” (as specified by Configuration.xml), and that each CDB Version can have a different encoding for a given dataset, the result is that a “CDB” may pretty well exist with multiple encodings for the same dataset. This means that if you wish to use GeoPackage containers, you need to create a version that will just contain GeoPackages of the vector data and not include any Shapefiles.</p>
+<p>Before reading this standard, please remember that the idea is to restrict the encoding of a dataset to a single vector format per CDB Version. Since a “CDB” is made of one or more “Versions” (as specified by Configuration.xml or Version.xml), and that each CDB Version can have a different encoding for a given dataset, the result is that a “CDB” may pretty well exist with multiple encodings for the same dataset. This means that if you wish to use GeoPackage containers, you need to create a version that will just contain GeoPackages of the vector data and not include any Shapefiles.</p>
 </div>
 </td>
 </tr>
@@ -1042,7 +1042,66 @@ when it comes to encoding tiles with small quantities of data.  But it does redu
 </div>
 </div>
 <div class="sect1">
-<h2 id="_flattening_the_schema"><a class="anchor" href="#_flattening_the_schema"></a>8. Flattening the Schema</h2>
+<h2 id="_sample_conversion_tools"><a class="anchor" href="#_sample_conversion_tools"></a>8. Sample Conversion Tools</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sample conversion tools may be found in the Cognitics GitHub repo located at <a href="https://github.com/Cognitics/cdb-shp-geopackage-convert" class="bare">https://github.com/Cognitics/cdb-shp-geopackage-convert</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Warning: Use the sample conversion code at your own risk. It is intended to provide an example on how to convert Shapefiles to GeoPackage in a CDB, and is not an OGC tested application. Make sure you test on a backup copy of your CDB first.</strong></p>
+</div>
+<div class="paragraph">
+<p>The sample converter is written in Python, and uses GDAL (version 2.2.3 or greater) with the Python bindings. Binaries of GDAL can be found at <a href="https://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries" class="bare">https://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries</a>.</p>
+</div>
+<div class="paragraph">
+<p>To use the sample converter tool, use the following Syntax:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Usage: Convert.py &lt;Input Root CDB Directory&gt; &lt;Output Directory for GeoPackage Files&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The converter starts by calling the function:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>generateMetaFiles.generateMetaFiles(cDBRoot)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This function scans the CDB to find a list of Shapefiles. It stores a list of all Shapefiles in a file called shapeindex.py. Another file named shapemeta.py is generated with a list of shapefiles and the extents of each file.</p>
+</div>
+<div class="paragraph">
+<p>The shapemeta.py file is not necessary for the conversion, but can be useful for analysis. That block of code can be removed for a faster conversion if it isn&#8217;t needed.</p>
+</div>
+<div class="paragraph">
+<p>Next, the index file is scanned, and each ShapeFile is processed through:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>copyFeaturesFromShapeToGeoPackage(shpFilename,outputGeoPackageFile)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the shapefile passed through this function is a feature file, and not a feature class or extended attribute file, the appropriate feature class and extended attributes DBF file (based on Selector2 in the filename) is ready by calling readDBF. All records in each file are read and stored in a dictionary.</p>
+</div>
+<div class="paragraph">
+<p>Next, GDAL is used to create the appropriate GeoPackage file and layers. Then GDAL is used to open the ShapeFile and iterate through each feature. To flatten the feature class records, as each feature is read, any matching feature class records (based on the CNAM attribute) are added to the feature record.</p>
+</div>
+<div class="paragraph">
+<p>After copyFeaturesFromShapeToGeoPackage has completed, the extended attribute DBF file that matches the feature file is read. The appropriate layer is created in the GeoPackage. The name of that layer is identical to the filename of the extended attribute DBF file, without the .dbf extension. Each record in the extended attribute DBF file is read and added to the new layer in the GeoPackage. Each record from the DFB file is copied into the GeoPackage layer.</p>
+</div>
+<div class="paragraph">
+<p>Note that no additional relationships or foreign keys are necessary. The feature attributes that are used to link the features to the Extended Attributes in the GeoPackage are the same as the attributes from the ShapeFile (CEAI,GEAI, and VEAI) and have been renamed to indicate either the Instance or Class level (see Figure 1 in the Flattening the Schema of the Normative document).</p>
+</div>
+<div class="paragraph">
+<p>After each feature ShapeFile has been processed, the conversion is complete. Note that none of the associated ShapeFile or DBF files are removed from the CDB.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_flattening_the_schema"><a class="anchor" href="#_flattening_the_schema"></a>9. Flattening the Schema</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The CDB Shapefile standard provides three attribution schemas to represent attribution data.  Those three have been flattened into two for use with GeoPackage.</p>
@@ -1262,7 +1321,7 @@ Record 9 in the extended-level attributes table is a class-level attribute relat
 </div>
 </div>
 <div class="sect1">
-<h2 id="_layer_names_within_a_geopackage"><a class="anchor" href="#_layer_names_within_a_geopackage"></a>9. Layer Names within a GeoPackage</h2>
+<h2 id="_layer_names_within_a_geopackage"><a class="anchor" href="#_layer_names_within_a_geopackage"></a>10. Layer Names within a GeoPackage</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Each GeoPackage file shall contain one and only one feature table. The feature table shall include all attributes (fields) required by the CDB standard (Volume 1, 5.7.1.2. CDB Attribution). The single feature table shall be named identically to the GeoPackage filename (not including the ".gpkg" filename extension). A GeoPackage file may include an optional extended level attribute table. The extended level attribute table shall not contain geometry. The name of the extended level attribute table shall use the CS2 selector shown in Table 2. Table 3 shows the file naming convention.</p>
@@ -1296,11 +1355,11 @@ Record 9 in the extended-level attributes table is a class-level attribute relat
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Snnn</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Character S followed by the 3-digit value of Component Selector 1.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Character S followed by the 3-digit value of Component Selector 1 (CS1).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Tnnn</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Character T followed by the 3-digit value of Component Selector 2.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Character T followed by the 3-digit value of Component Selector 2 (CS2).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">LOD</p></td>
@@ -1331,54 +1390,36 @@ Extended Attribute Table Name: N13E045_D201_S002_T017_L00_U0_R0</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 7.1428%;">
-<col style="width: 7.1428%;">
-<col style="width: 7.1428%;">
-<col style="width: 7.1428%;">
-<col style="width: 7.1428%;">
-<col style="width: 7.1428%;">
-<col style="width: 7.1428%;">
-<col style="width: 7.1428%;">
-<col style="width: 7.1428%;">
-<col style="width: 7.1428%;">
-<col style="width: 7.1428%;">
-<col style="width: 7.1428%;">
-<col style="width: 7.1428%;">
-<col style="width: 7.1436%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">N13</th>
 <th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">E045</th>
-<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">_D</th>
-<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">201</th>
-<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">_S</th>
-<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">002</th>
-<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">_T</th>
-<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">003</th>
-<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">_L</th>
-<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">00</th>
-<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">_U</th>
-<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">0</th>
-<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">_R</th>
-<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">0</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">D201</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">S002</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">T003</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">L00</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">U0</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">R0</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Latitude</p></td>
 <td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Longitude</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"></td>
 <td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Dataset Code</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"></td>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Selector (CS1)</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"></td>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Selector 2 (CS2)</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">CS1</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">CS2</p></td>
 <td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">LOD</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"></td>
 <td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">UREF</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"></td>
 <td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">RREF</p></td>
 </tr>
 </tbody>
@@ -1393,65 +1434,6 @@ Extended Attribute Table Name: N13E045_D201_S002_T017_L00_U0_R0</p>
 </div>
 <div id="img_CDBGpkgFlattenedSchemaforRoads" class="paragraph">
 <p><strong>Figure2. CDB GeoPackage Flattened Schema Road Dataset Example</strong></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_sample_conversion_tools"><a class="anchor" href="#_sample_conversion_tools"></a>10. Sample Conversion Tools</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Sample conversion tools may be found in the Cognitics GitHub repo located at <a href="https://github.com/Cognitics/cdb-shp-geopackage-convert" class="bare">https://github.com/Cognitics/cdb-shp-geopackage-convert</a>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Warning: Use the sample conversion code at your own risk. It is intended to provide an example on how to convert Shapefiles to GeoPackage in a CDB, and is not an OGC tested application. Make sure you test on a backup copy of your CDB first.</strong></p>
-</div>
-<div class="paragraph">
-<p>The sample converter is written in Python, and uses GDAL (version 2.2.3 or greater) with the Python bindings. Binaries of GDAL can be found at <a href="https://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries" class="bare">https://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries</a>.</p>
-</div>
-<div class="paragraph">
-<p>To use the sample converter tool, use the following Syntax:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Usage: Convert.py &lt;Input Root CDB Directory&gt; &lt;Output Directory for GeoPackage Files&gt;</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The converter starts by calling the function:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>generateMetaFiles.generateMetaFiles(cDBRoot)</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This function scans the CDB to find a list of Shapefiles. It stores a list of all Shapefiles in a file called shapeindex.py. Another file named shapemeta.py is generated with a list of shapefiles and the extents of each file.</p>
-</div>
-<div class="paragraph">
-<p>The shapemeta.py file is not necessary for the conversion, but can be useful for analysis. That block of code can be removed for a faster conversion if it isn&#8217;t needed.</p>
-</div>
-<div class="paragraph">
-<p>Next, the index file is scanned, and each ShapeFile is processed through:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>copyFeaturesFromShapeToGeoPackage(shpFilename,outputGeoPackageFile)</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If the shapefile passed through this function is a feature file, and not a feature class or extended attribute file, the appropriate feature class and extended attributes DBF file (based on Selector2 in the filename) is ready by calling readDBF. All records in each file are read and stored in a dictionary.</p>
-</div>
-<div class="paragraph">
-<p>Next, GDAL is used to create the appropriate GeoPackage file and layers. Then GDAL is used to open the ShapeFile and iterate through each feature. To flatten the feature class records, as each feature is read, any matching feature class records (based on the CNAM attribute) are added to the feature record.</p>
-</div>
-<div class="paragraph">
-<p>After copyFeaturesFromShapeToGeoPackage has completed, the extended attribute DBF file that matches the feature file is read. The appropriate layer is created in the GeoPackage. The name of that layer is identical to the filename of the extended attribute DBF file, without the .dbf extension. Each record in the extended attribute DBF file is read and added to the new layer in the GeoPackage. Each record from the DFB file is copied into the GeoPackage layer.</p>
-</div>
-<div class="paragraph">
-<p>Note that no additional relationships or foreign keys are necessary. The feature attributes that are used to link the features to the Extended Attributes in the GeoPackage are the same as the attributes from the ShapeFile (CEAI,GEAI, and VEAI) and have been renamed to indicate either the Instance or Class level (see Figure 1 in section above on Flattening the Schema).</p>
-</div>
-<div class="paragraph">
-<p>After each feature ShapeFile has been processed, the conversion is complete. Note that none of the associated ShapeFile or DBF files are removed from the CDB.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>

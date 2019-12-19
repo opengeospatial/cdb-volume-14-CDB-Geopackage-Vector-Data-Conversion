@@ -567,7 +567,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc">
 <div id="toctitle" class="title">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_scope">1. Scope</a></li>
+<li><a href="#_scope">1. Scope</a>
+<ul class="sectlevel2">
+<li><a href="#_cdb_introduction">1.1. CDB Introduction</a></li>
+</ul>
+</li>
 <li><a href="#_conformance">2. Conformance</a></li>
 <li><a href="#_references">3. References</a></li>
 <li><a href="#_terms_and_definitions">4. Terms and Definitions</a>
@@ -595,7 +599,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_layer_names_within_a_geopackage">8. Layer Names within a GeoPackage</a></li>
 <li><a href="#_sample_conversion_tools_informative">Annex A: Sample Conversion Tools (Informative)</a></li>
 <li><a href="#_revision_history">Annex B: Revision History</a></li>
-<li><a href="#Bibliography">Annex C: Bibliography</a></li>
 </ul>
 </div>
 <div style="page-break-after: always;"></div>
@@ -642,8 +645,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>The following organizations submitted this Document to the Open Geospatial Consortium (OGC):</p>
 </div>
 <div class="paragraph">
-<p>Cognitics, Inc.
-CAE Inc.</p>
+<p>Cognitics, Inc.</p>
+</div>
+<div class="paragraph">
+<p>CAE Inc.</p>
 </div>
 <div class="paragraph">
 <p><strong class="big">v.     Submitters</strong></p>
@@ -706,11 +711,84 @@ CAE Inc.</p>
 <p>This document discusses the results and conclusions of the Interoperability Experiment conducted to determine the optimal use of GeoPackage in CDB, assuming relatively minor changes to the CDB current standard.  It also offers general guidance on the use of GeoPackage in CDB, with details on the flattened attribute schema.</p>
 </div>
 <div class="paragraph">
-<p>Before reading this standard, please remember that the idea is to restrict the encoding of a dataset to a single vector format per CDB Version. Since a “CDB” is made of one or more “Versions” (as specified by Configuration.xml or Version.xml), and that each CDB Version can have a different encoding for a given dataset, the result is that a “CDB” may pretty well exist with multiple encodings for the same dataset. This means that if you wish to use GeoPackage containers, you need to create a version that will just contain GeoPackages of the vector data and not include any Shapefiles.</p>
+<p>Before reading the remainder of this Best Practices document, please remember that the idea is to restrict the encoding of a dataset to a single vector format per CDB Version. Since a “CDB” is made of one or more “Versions” (as specified by Configuration.xml or Version.xml), and that each CDB Version can have a different encoding for a given dataset, the result is that a “CDB” may pretty well exist with multiple encodings for the same dataset. This means that if you wish to use GeoPackage containers, you need to create a version that will just contain GeoPackages of the vector data and not include any Shapefiles.</p>
 </div>
 </td>
 </tr>
 </table>
+</div>
+<div class="sect2">
+<h3 id="_cdb_introduction"><a class="anchor" href="#_cdb_introduction"></a>1.1. CDB Introduction</h3>
+<div class="paragraph">
+<p>The CDB standard defines a data model and the representation, organization, storage structure and conventions necessary to support all of the subsystems of a simulation workflow. The standard makes use of existing commercial and simulation data formats <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>The CDB conceptual model is a representation of the natural environment including external features such as man-made structures and systems. The model encompasses planimetry, terrain relief, terrain imagery, three-dimensional (3D) models of natural and man-made cultural features, 3D models of vehicles, the ocean surface, and the ocean bottom, including features (both natural and man-made) on the ocean floor. In addition, the model includes the attributes of the synthetic environment data as well as their relationships.</p>
+</div>
+<div class="paragraph">
+<p>A data store that conforms to the CDB standard (i.e., a CDB) contains datasets organized in layers, tiles and levels-of-detail. Together, these datasets represent the features and models of a synthetic environment for the purposes of distributed simulation applications. The organization of the geospatial data in a CDB data store is specifically tailored for real-time applications.</p>
+</div>
+<div class="paragraph">
+<p>For ease of editing and review, the standard has been separated into 16 Volumes, one being a schema repository.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Volume 0: OGC CDB Companion Primer for the CDB standard (Best Practice).</p>
+</li>
+<li>
+<p>Volume 1: OGC CDB Core Standard: Model and Physical Data Store Structure. The main body (core) of the CDB standard (Normative).</p>
+</li>
+<li>
+<p>Volume 2: OGC CDB Core Model and Physical Structure Annexes (Best Practice).</p>
+</li>
+<li>
+<p>Volume 3: OGC CDB Terms and Definitions (Normative).</p>
+</li>
+<li>
+<p>Volume 4: OGC CDB Rules for Encoding CDB Vector Data using Shapefiles (Best Practice).</p>
+</li>
+<li>
+<p>Volume 5: OGC CDB Radar Cross Section (RCS) Models (Best Practice).</p>
+</li>
+<li>
+<p>Volume 6: OGC CDB Rules for Encoding CDB Models using OpenFlight (Best Practice).</p>
+</li>
+<li>
+<p>Volume 7: OGC CDB Data Model Guidance (Best Practice).</p>
+</li>
+<li>
+<p>Volume 8: OGC CDB Spatial Reference System Guidance (Best Practice).</p>
+</li>
+<li>
+<p>Volume 9: OGC CDB Schema Package: <a href="http://schemas.opengis.net/cdb/" class="bare">http://schemas.opengis.net/cdb/</a> provides the normative schemas for key features types required in the synthetic modelling environment. Essentially, these schemas are designed to enable semantic interoperability within the simulation context (Normative).</p>
+</li>
+<li>
+<p>Volume 10: OGC CDB Implementation Guidance (Best Practice).</p>
+</li>
+<li>
+<p>Volume 11: OGC CDB Core Standard Conceptual Model (Normative).</p>
+</li>
+<li>
+<p>Volume 12: OGC CDB Navaids Attribution and Navaids Attribution Enumeration Values (Best Practice).</p>
+</li>
+<li>
+<p>Volume 13: OGC CDB Rules for Encoding CDB Vector Data using GeoPackage (Normative, Optional Extension).</p>
+</li>
+<li>
+<p>Volume 14: OGC CDB Guidance on Conversion of CDB Shapefiles into CDB GeoPackages (Best Practice).</p>
+</li>
+<li>
+<p>Volume 15: OGC CDB Optional Multi-Spectral Imagery Extension (Normative).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The major enhancements for version 1.2 are the definition of 1.) rules for encoding GeoPackages in a CDB data store, 2.) documenting best practices for conversion of CDB ShapeFiles into CDB GeoPackages, and 3.) resolution and incorporation of changes defined in &lt;X&gt; OGC Change Requests.</p>
+</div>
+<div class="paragraph">
+<p>The GeoPackage encoding is an optional extension and does not need to be implemented to provide a compliant CDB data store to the community. The only caveat is that if the developer of a version of a CDB data store wishes to use GeoPackages, then that version of the data store must use only the CDB GeoPackage encoding. Shapefiles and GeoPackages cannot be mixed in a unique version of a CDB data store.</p>
+</div>
 </div>
 </div>
 </div>
@@ -719,9 +797,6 @@ CAE Inc.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The OGC CDB Volume 1: Core specifies requirements that all GeoPackages that are to be stored in a CDB store shall implement.</p>
-</div>
-<div class="paragraph">
-<p>Conformance with the standard and best practice shall be checked using all the relevant tests specified in Annex A (normative) of this document. The framework, concepts, and methodology for testing, and the criteria to be achieved to claim conformance are specified in the OGC Compliance Testing Policies and Procedures and the OGC Compliance Testing web site.</p>
 </div>
 </div>
 </div>
@@ -1445,71 +1520,24 @@ Extended Attribute Table Name: N13E045_D201_S002_T017_L00_U0_R0</p>
 <th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Release</th>
 <th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Editor</th>
 <th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Primary clauses modified</th>
-<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Description</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Description
+
+&lt;&lt;&lt;</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">2016-04-28</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">0.1</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">G. Editor</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">initial version</p></td>
-</tr>
-</tbody>
-</table>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="Bibliography"><a class="anchor" href="#Bibliography"></a>Annex C: Bibliography</h2>
-<div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="title">Example Bibliography (Delete this note).</div>
-<div class="paragraph">
-<p>The TC has approved Springer LNCS as the official document citation type.</p>
-</div>
-<div class="paragraph">
-<p>Springer LNCS is widely used in technical and computer science journals and other publications</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>For citations in the text please use square brackets and consecutive numbers: [1], [2], [3]</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>– Actual References:</p>
-</div>
-<div class="paragraph">
-<p>[n] Journal: Author Surname, A.: Title. Publication Title. Volume number, Issue number, Pages Used (Year Published)</p>
-</div>
-<div class="paragraph">
-<p>[n] Web: Author Surname, A.: Title, <a href="http://Website-Url" class="bare">http://Website-Url</a></p>
-</div>
-</td>
-</tr>
 </table>
 </div>
-<div class="paragraph">
-<p></p>
-</div>
-<div id="OGC2015" class="paragraph">
-<p>[1] OGC: OGC Testbed 12 Annex B: Architecture. (2015).</p>
 </div>
 </div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. Future versions of the CDB standard will continue to define the use of other industry approved standards and formats.
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-12-19 15:31:24 -0500
+Last updated 2019-12-19 15:53:30 -0500
 </div>
 </div>
 <script type="text/x-mathjax-config">

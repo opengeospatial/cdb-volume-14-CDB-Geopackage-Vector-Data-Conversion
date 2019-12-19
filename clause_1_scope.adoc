@@ -1,9 +1,22 @@
 == Scope
 [NOTE]
 ====
-This Best Practice compliments the optional OGC CDB Extension that defines the behavior and requirements for encoding vector data in a GeoPackage container for use in a CDB data store. Both are grounded in the existing CDB Core requirements and the GeoPackage core requirements for vector data. 
+This Best Practice compliments the optional OGC CDB Extension that defines the behavior and requirements for encoding vector data in a GeoPackage container for use in a CDB data store. Both are grounded in the existing CDB Core requirements and the GeoPackage core requirements for vector data.
 
 This document discusses the results and conclusions of the Interoperability Experiment conducted to determine the optimal use of GeoPackage in CDB, assuming relatively minor changes to the CDB current standard.  It also offers general guidance on the use of GeoPackage in CDB, with details on the flattened attribute schema.
 
-Before reading this standard, please remember that the idea is to restrict the encoding of a dataset to a single vector format per CDB Version. Since a “CDB” is made of one or more “Versions” (as specified by Configuration.xml or Version.xml), and that each CDB Version can have a different encoding for a given dataset, the result is that a “CDB” may pretty well exist with multiple encodings for the same dataset. This means that if you wish to use GeoPackage containers, you need to create a version that will just contain GeoPackages of the vector data and not include any Shapefiles.
+Before reading the remainder of this Best Practices document, please remember that the idea is to restrict the encoding of a dataset to a single vector format per CDB Version. Since a “CDB” is made of one or more “Versions” (as specified by Configuration.xml or Version.xml), and that each CDB Version can have a different encoding for a given dataset, the result is that a “CDB” may pretty well exist with multiple encodings for the same dataset. This means that if you wish to use GeoPackage containers, you need to create a version that will just contain GeoPackages of the vector data and not include any Shapefiles.
 ====
+== CDBIntroduction
+
+The CDB standard defines a data model and the representation, organization, storage structure and conventions necessary to support all of the subsystems of a simulation workflow. The standard makes use of existing commercial and simulation data formats footnote:[Future versions of the CDB standard will continue to define the use of other industry approved standards and formats.].
+
+The CDB conceptual model is a representation of the natural environment including external features such as man-made structures and systems. The model encompasses planimetry, terrain relief, terrain imagery, three-dimensional (3D) models of natural and man-made cultural features, 3D models of vehicles, the ocean surface, and the ocean bottom, including features (both natural and man-made) on the ocean floor. In addition, the model includes the attributes of the synthetic environment data as well as their relationships.
+
+A data store that conforms to the CDB standard (i.e., a CDB) contains datasets organized in layers, tiles and levels-of-detail. Together, these datasets represent the features and models of a synthetic environment for the purposes of distributed simulation applications. The organization of the geospatial data in a CDB data store is specifically tailored for real-time applications.
+
+include::list_of_volumes.adoc[]
+
+The major enhancements for version 1.2 are the definition of 1.) rules for encoding GeoPackages in a CDB data store, 2.) documenting best practices for conversion of CDB ShapeFiles into CDB GeoPackages, and 3.) resolution and incorporation of changes defined in <X> OGC Change Requests.
+
+The GeoPackage encoding is an optional extension and does not need to be implemented to provide a compliant CDB data store to the community. The only caveat is that if the developer of a version of a CDB data store wishes to use GeoPackages, then that version of the data store must use only the CDB GeoPackage encoding. Shapefiles and GeoPackages cannot be mixed in a unique version of a CDB data store.

@@ -1,7 +1,7 @@
 == Scope
 [NOTE]
 ====
-This Best Practice compliments the optional OGC CDB Extension that defines the behavior and requirements for encoding vector data in a GeoPackage container for use in a CDB data store. Both are grounded in the existing CDB Core requirements and the GeoPackage core requirements for vector data.
+This Best Practice complements the optional OGC CDB Extension that defines the behavior and requirements for encoding vector data in a GeoPackage container for use in a CDB data store. Both are grounded in the existing CDB Core requirements and the GeoPackage core requirements for vector data.
 
 This document discusses the results and conclusions of the Interoperability Experiment conducted to determine the optimal use of GeoPackage in CDB, assuming relatively minor changes to the CDB current standard.  It also offers general guidance on the use of GeoPackage in CDB, with details on the flattened attribute schema.
 

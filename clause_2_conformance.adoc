@@ -1,15 +1,5 @@
 == Conformance
-This best practice defines [TBD] requirements / conformance classes.
 
-The standardization targets of all conformance classes are "GeoPackages in CDB Data Store".
-The main requirements class is:
-
-Core. <<Add link to Annex A later>>
-
-The Core specifies requirements that all GeoPackages that are to be stored in a CDB store that shall be implemented.
+The OGC CDB Volume 1: Core specifies requirements that all GeoPackages that are to be stored in a CDB store shall implement.
 
 Conformance with the standard and best practice shall be checked using all the relevant tests specified in Annex A (normative) of this document. The framework, concepts, and methodology for testing, and the criteria to be achieved to claim conformance are specified in the OGC Compliance Testing Policies and Procedures and the OGC Compliance Testing web site.
-
-In order to conform to this OGC® interface best practice, a software implementation shall choose to implement the conformance levels specified in Annex A (normative)
-
-All requirements-classes and conformance-classes described in this document are owned by the standard(s) identified.

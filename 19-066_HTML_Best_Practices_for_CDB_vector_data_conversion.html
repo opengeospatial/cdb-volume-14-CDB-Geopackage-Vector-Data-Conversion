@@ -589,28 +589,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_version">4.15. <strong>Version</strong></a></li>
 </ul>
 </li>
-<li><a href="#_conventions">5. Conventions</a>
-<ul class="sectlevel2">
-<li><a href="#_identifiers">5.1. Identifiers</a></li>
-</ul>
-</li>
-<li><a href="#_results_from_interoperability_experiments">6. Results from Interoperability Experiments</a></li>
-<li><a href="#_guidance_on_the_use_of_geopackages">7. Guidance on the use of GeoPackages</a></li>
-<li><a href="#_flattening_the_schema">8. Flattening the Schema</a></li>
-<li><a href="#_layer_names_within_a_geopackage">9. Layer Names within a GeoPackage</a></li>
-<li><a href="#_conformance_class_abstract_test_suite_normative">Annex A: Conformance Class Abstract Test Suite (Normative)</a>
-<ul class="sectlevel2">
-<li><a href="#_conformance_class_a">A.1. Conformance Class A</a>
-<ul class="sectlevel3">
-<li><a href="#_requirement_1">A.1.1. Requirement 1</a></li>
-<li><a href="#_requirement_2">A.1.2. Requirement 2</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_sample_conversion_tools_informative">Annex B: Sample Conversion Tools (Informative)</a></li>
-<li><a href="#_revision_history">Annex C: Revision History</a></li>
-<li><a href="#Bibliography">Annex D: Bibliography</a></li>
+<li><a href="#_results_from_interoperability_experiments">5. Results from Interoperability Experiments</a></li>
+<li><a href="#_guidance_on_the_use_of_geopackages">6. Guidance on the use of GeoPackages</a></li>
+<li><a href="#_flattening_the_schema">7. Flattening the Schema</a></li>
+<li><a href="#_layer_names_within_a_geopackage">8. Layer Names within a GeoPackage</a></li>
+<li><a href="#_sample_conversion_tools_informative">Annex A: Sample Conversion Tools (Informative)</a></li>
+<li><a href="#_revision_history">Annex B: Revision History</a></li>
+<li><a href="#Bibliography">Annex C: Bibliography</a></li>
 </ul>
 </div>
 <div style="page-break-after: always;"></div>
@@ -657,7 +642,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>The following organizations submitted this Document to the Open Geospatial Consortium (OGC):</p>
 </div>
 <div class="paragraph">
-<p>Cognitics, Inc.</p>
+<p>Cognitics, Inc.
+CAE Inc.</p>
 </div>
 <div class="paragraph">
 <p><strong class="big">v.     Submitters</strong></p>
@@ -732,26 +718,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_conformance"><a class="anchor" href="#_conformance"></a>2. Conformance</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This best practice defines [TBD] requirements / conformance classes.</p>
-</div>
-<div class="paragraph">
-<p>The standardization targets of all conformance classes are "GeoPackages in CDB Data Store".
-The main requirements class is:</p>
-</div>
-<div class="paragraph">
-<p>Core. <a href="#Add link to Annex A later">[Add link to Annex A later]</a></p>
-</div>
-<div class="paragraph">
-<p>The Core specifies requirements that all GeoPackages that are to be stored in a CDB store that shall be implemented.</p>
+<p>The OGC CDB Volume 1: Core specifies requirements that all GeoPackages that are to be stored in a CDB store shall implement.</p>
 </div>
 <div class="paragraph">
 <p>Conformance with the standard and best practice shall be checked using all the relevant tests specified in Annex A (normative) of this document. The framework, concepts, and methodology for testing, and the criteria to be achieved to claim conformance are specified in the OGC Compliance Testing Policies and Procedures and the OGC Compliance Testing web site.</p>
-</div>
-<div class="paragraph">
-<p>In order to conform to this OGC® interface best practice, a software implementation shall choose to implement the conformance levels specified in Annex A (normative)</p>
-</div>
-<div class="paragraph">
-<p>All requirements-classes and conformance-classes described in this document are owned by the standard(s) identified.</p>
 </div>
 </div>
 </div>
@@ -898,24 +868,7 @@ The main requirements class is:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_conventions"><a class="anchor" href="#_conventions"></a>5. Conventions</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This sections provides details and examples for any conventions used in the document. Examples of conventions are symbols, abbreviations, use of XML schema, or special notes regarding how to read the document.</p>
-</div>
-<div class="sect2">
-<h3 id="_identifiers"><a class="anchor" href="#_identifiers"></a>5.1. Identifiers</h3>
-<div class="paragraph">
-<p>The normative provisions in this standard are denoted by the URI <a href="http://www.opengis.net/spec/cdb-vector-geopackage/1.2" class="bare">http://www.opengis.net/spec/cdb-vector-geopackage/1.2</a></p>
-</div>
-<div class="paragraph">
-<p>All requirements and conformance tests that appear in this document are denoted by partial URIs which are relative to this base.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_results_from_interoperability_experiments"><a class="anchor" href="#_results_from_interoperability_experiments"></a>6. Results from Interoperability Experiments</h2>
+<h2 id="_results_from_interoperability_experiments"><a class="anchor" href="#_results_from_interoperability_experiments"></a>5. Results from Interoperability Experiments</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>OGC CDB and GeoPackage are both standards increasingly used in M&amp;S and GEOINT, but they both contain weaknesses and strengths when it comes to the combined needs of both industries. The combined technology of GeoPackage and OGC CDB is hoped to be a deterministic repository of easily read geospatial datasets suitable for storage, runtime access, and dissemination for live, virtual, constructive, gaming, and Mission Command (MC) systems. The use of CDB raised concerns in both industries because it utilizes Esri Shapefiles and Presagis OpenFlight, both of which are now open standards but were once proprietary. The primary issue is that Shapefiles leverage the dBase IV format to store feature attribution. To address the limitations of ESRI Shapefiles within CDB, potential designs were explored to integrate OGC GeoPackage with OGC CDB. GeoPackage technology was designed to ensure Mobile / Handheld devices could interoperate with systems within the larger Command Post and U.S. Army Enterprise. Current Geopackage adaptations can natively store 3D information, routing information, various types of data ‘tiles’, and other geographically related datasets.  An implementation of OGC GeoPackage within CDB aligns CDB vector data storage with the U.S. Army architecture.</p>
@@ -1011,7 +964,7 @@ when it comes to encoding tiles with small quantities of data.  But it does redu
 </div>
 </div>
 <div class="sect1">
-<h2 id="_guidance_on_the_use_of_geopackages"><a class="anchor" href="#_guidance_on_the_use_of_geopackages"></a>7. Guidance on the use of GeoPackages</h2>
+<h2 id="_guidance_on_the_use_of_geopackages"><a class="anchor" href="#_guidance_on_the_use_of_geopackages"></a>6. Guidance on the use of GeoPackages</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>An GeoPackage is an open, standards-based, platform-independent, portable, self-describing, compact format for transferring geospatial information. It is a platform-independent SQLite database file. The GeoPackage specification was developed by OGC.  This document describes the encoding of Vector Data in GeoPackage only.</p>
@@ -1074,7 +1027,7 @@ when it comes to encoding tiles with small quantities of data.  But it does redu
 </div>
 </div>
 <div class="sect1">
-<h2 id="_flattening_the_schema"><a class="anchor" href="#_flattening_the_schema"></a>8. Flattening the Schema</h2>
+<h2 id="_flattening_the_schema"><a class="anchor" href="#_flattening_the_schema"></a>7. Flattening the Schema</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The CDB Shapefile standard provides three attribution schemas to represent attribution data.  Those three have been flattened into two for use with GeoPackage.</p>
@@ -1294,7 +1247,7 @@ Record 9 in the extended-level attributes table is a class-level attribute relat
 </div>
 </div>
 <div class="sect1">
-<h2 id="_layer_names_within_a_geopackage"><a class="anchor" href="#_layer_names_within_a_geopackage"></a>9. Layer Names within a GeoPackage</h2>
+<h2 id="_layer_names_within_a_geopackage"><a class="anchor" href="#_layer_names_within_a_geopackage"></a>8. Layer Names within a GeoPackage</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Each GeoPackage file shall contain one and only one feature table. The feature table shall include all attributes (fields) required by the CDB standard (Volume 1, 5.7.1.2. CDB Attribution). The single feature table shall be named identically to the GeoPackage filename (not including the ".gpkg" filename extension). A GeoPackage file may include an optional extended level attribute table. The extended level attribute table shall not contain geometry. The name of the extended level attribute table shall use the CS2 selector shown in Table 2. Table 3 shows the file naming convention.</p>
@@ -1412,61 +1365,11 @@ Extended Attribute Table Name: N13E045_D201_S002_T017_L00_U0_R0</p>
 <p>See <a href="https://github.com/opengeospatial/Draft-Best-Practices-Document-Geopackage-Vector-Data-Conversion/blob/master/annex-n.adoc">Annex A: Sample Conversion Tools</a> for information on the use of sample conversion tools found in the <a href="https://github.com/Cognitics/cdb-shp-geopackage-convert">Cognitics GitHub repo</a>.</p>
 </div>
 <div style="page-break-after: always;"></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_conformance_class_abstract_test_suite_normative"><a class="anchor" href="#_conformance_class_abstract_test_suite_normative"></a>Annex A: Conformance Class Abstract Test Suite (Normative)</h2>
-<div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Ensure that there is a conformance class for each requirements class and a test for each requirement (identified by requirement name and number)
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_conformance_class_a"><a class="anchor" href="#_conformance_class_a"></a>A.1. Conformance Class A</h3>
-<div class="sect3">
-<h4 id="_requirement_1"><a class="anchor" href="#_requirement_1"></a>A.1.1. Requirement 1</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Test id:</p></th>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">/conf/conf-class-a/req-name-1</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Requirement:</p></th>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">/req/req-class-a/req-name-1</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Test purpose:</p></th>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Verify that&#8230;&#8203;</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Test method:</p></th>
-<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Inspect&#8230;&#8203;</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_requirement_2"><a class="anchor" href="#_requirement_2"></a>A.1.2. Requirement 2</h4>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
-</div>
-</div>
 <div class="sect1">
-<h2 id="_sample_conversion_tools_informative"><a class="anchor" href="#_sample_conversion_tools_informative"></a>Annex B: Sample Conversion Tools (Informative)</h2>
+<h2 id="_sample_conversion_tools_informative"><a class="anchor" href="#_sample_conversion_tools_informative"></a>Annex A: Sample Conversion Tools (Informative)</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Sample conversion tools may be found in the Cognitics GitHub repo located at <a href="https://github.com/Cognitics/cdb-shp-geopackage-convert" class="bare">https://github.com/Cognitics/cdb-shp-geopackage-convert</a>.</p>
@@ -1526,7 +1429,7 @@ Ensure that there is a conformance class for each requirements class and a test 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_revision_history"><a class="anchor" href="#_revision_history"></a>Annex C: Revision History</h2>
+<h2 id="_revision_history"><a class="anchor" href="#_revision_history"></a>Annex B: Revision History</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all" style="width: 90%;">
 <colgroup>
@@ -1559,7 +1462,7 @@ Ensure that there is a conformance class for each requirements class and a test 
 </div>
 </div>
 <div class="sect1">
-<h2 id="Bibliography"><a class="anchor" href="#Bibliography"></a>Annex D: Bibliography</h2>
+<h2 id="Bibliography"><a class="anchor" href="#Bibliography"></a>Annex C: Bibliography</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
@@ -1606,7 +1509,7 @@ Ensure that there is a conformance class for each requirements class and a test 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-19 10:02:40 -0500
+Last updated 2019-12-19 15:31:24 -0500
 </div>
 </div>
 <script type="text/x-mathjax-config">

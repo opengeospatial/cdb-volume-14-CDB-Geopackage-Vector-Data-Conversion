@@ -1,22 +1,27 @@
 [big]*i.     Abstract*
 
-<Insert Abstract Text here>
+This best practices document describes the conversion process for converting CDB structured Shapefile to CDB structued GeoPackages.  This is the companion document to the optional OGC CDB extension document, which defines the requirements and provides CDB specific guidance on using GeoPackage containers in a CDB data store.
 
 [big]*ii.    Keywords*
 
 The following are keywords to be used by search engines and document catalogues.
 
-ogcdoc, OGC document,  <tags separated by commas>
+OGC, ogcdoc, OGC document, CDB, GeoPackage
 
 [big]*iii.   Preface*
 
-[NOTE]
-====
-Insert Preface Text here. Give OGC specific commentary: describe the technical content, reason for document, history of the document and precursors, and plans for future work. >
+*Background for this optional CDB Extension*
+
+The original requirement for the optional CDB extension was documented in http://ogc.standardstracker.org/show_request.cgi?id=545[OGC Change Request 545]. This OGC change request was submitted based on work performed in http://docs.opengeospatial.org/per/17-042.html[OGC Testbed 13]. The testbed activity and related change request captured a broad community requirement for being able to use GeoPackage containers in a CDB data store. At the same time, an additional requirement was identified to test and identify best practices for moving CDB vector files stored as Shapefiles into one or more GeoPackages.
+
+In 2019, the CDB SWG executed the https://docs.opengeospatial.org/per/19-007.html[CDB Vector Data in GeoPackage Interoperability Experiment (IE)]. The participants in this IE tested transforming CDB Shapefile vector data into one or more GeoPackage(s) and storing the result in a CDB data store. GeoPackage Version 1.2 and CDB Version 1.1 and related Best Practices were the standards baseline used for this experiment. The IE built on the work described in the https://portal.opengeospatial.org/files/?artifact_id=82553[OGC CDB, Leveraging the GeoPackage Discussion Paper]. A primary objective of the IE was to agree and document possible change requests and/or best practices for storing vector data in a CDB data using encodings and/or containers other than Shapefiles.
+
+*OGC Patent Declaration*
+
 Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.
 
 Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.
-====
+
 [big]*iv.    Submitting organizations*
 
 The following organizations submitted this Document to the Open Geospatial Consortium (OGC):

@@ -596,9 +596,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_results_from_interoperability_experiments">6. Results from Interoperability Experiments</a></li>
 <li><a href="#_guidance_on_the_use_of_geopackages">7. Guidance on the use of GeoPackages</a></li>
-<li><a href="#_sample_conversion_tools">8. Sample Conversion Tools</a></li>
-<li><a href="#_flattening_the_schema">9. Flattening the Schema</a></li>
-<li><a href="#_layer_names_within_a_geopackage">10. Layer Names within a GeoPackage</a></li>
+<li><a href="#_flattening_the_schema">8. Flattening the Schema</a></li>
+<li><a href="#_layer_names_within_a_geopackage">9. Layer Names within a GeoPackage</a></li>
 <li><a href="#_conformance_class_abstract_test_suite_normative">Annex A: Conformance Class Abstract Test Suite (Normative)</a>
 <ul class="sectlevel2">
 <li><a href="#_conformance_class_a">A.1. Conformance Class A</a>
@@ -609,7 +608,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_title_normativeinformative">Annex B: Title ( {Normative/Informative} )</a></li>
+<li><a href="#_sample_conversion_tools_informative">Annex B: Sample Conversion Tools (Informative)</a></li>
 <li><a href="#_revision_history">Annex C: Revision History</a></li>
 <li><a href="#Bibliography">Annex D: Bibliography</a></li>
 </ul>
@@ -619,7 +618,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong class="big">i.     Abstract</strong></p>
 </div>
 <div class="paragraph">
-<p>&lt;Insert Abstract Text here&gt;</p>
+<p>This best practices document describes the conversion process for converting CDB structured Shapefile to CDB structued GeoPackages.  This is the companion document to the optional OGC CDB extension document, which defines the requirements and provides CDB specific guidance on using GeoPackage containers in a CDB data store.</p>
 </div>
 <div class="paragraph">
 <p><strong class="big">ii.    Keywords</strong></p>
@@ -628,28 +627,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>The following are keywords to be used by search engines and document catalogues.</p>
 </div>
 <div class="paragraph">
-<p>ogcdoc, OGC document,  &lt;tags separated by commas&gt;</p>
+<p>OGC, ogcdoc, OGC document, CDB, GeoPackage</p>
 </div>
 <div class="paragraph">
 <p><strong class="big">iii.   Preface</strong></p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>Insert Preface Text here. Give OGC specific commentary: describe the technical content, reason for document, history of the document and precursors, and plans for future work. &gt;
-Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.</p>
+<p><strong>Background for this optional CDB Extension</strong></p>
+</div>
+<div class="paragraph">
+<p>The original requirement for the optional CDB extension was documented in <a href="http://ogc.standardstracker.org/show_request.cgi?id=545">OGC Change Request 545</a>. This OGC change request was submitted based on work performed in <a href="http://docs.opengeospatial.org/per/17-042.html">OGC Testbed 13</a>. The testbed activity and related change request captured a broad community requirement for being able to use GeoPackage containers in a CDB data store. At the same time, an additional requirement was identified to test and identify best practices for moving CDB vector files stored as Shapefiles into one or more GeoPackages.</p>
+</div>
+<div class="paragraph">
+<p>In 2019, the CDB SWG executed the <a href="https://docs.opengeospatial.org/per/19-007.html">CDB Vector Data in GeoPackage Interoperability Experiment (IE)</a>. The participants in this IE tested transforming CDB Shapefile vector data into one or more GeoPackage(s) and storing the result in a CDB data store. GeoPackage Version 1.2 and CDB Version 1.1 and related Best Practices were the standards baseline used for this experiment. The IE built on the work described in the <a href="https://portal.opengeospatial.org/files/?artifact_id=82553">OGC CDB, Leveraging the GeoPackage Discussion Paper</a>. A primary objective of the IE was to agree and document possible change requests and/or best practices for storing vector data in a CDB data using encodings and/or containers other than Shapefiles.</p>
+</div>
+<div class="paragraph">
+<p><strong>OGC Patent Declaration</strong></p>
+</div>
+<div class="paragraph">
+<p>Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.</p>
 </div>
 <div class="paragraph">
 <p>Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p><strong class="big">iv.    Submitting organizations</strong></p>
@@ -658,7 +657,7 @@ Attention is drawn to the possibility that some of the elements of this document
 <p>The following organizations submitted this Document to the Open Geospatial Consortium (OGC):</p>
 </div>
 <div class="paragraph">
-<p>Organization name(s)</p>
+<p>Cognitics, Inc.</p>
 </div>
 <div class="paragraph">
 <p><strong class="big">v.     Submitters</strong></p>
@@ -666,9 +665,42 @@ Attention is drawn to the possibility that some of the elements of this document
 <div class="paragraph">
 <p>All questions regarding this submission should be directed to the editor or the submitters:</p>
 </div>
-<div class="paragraph">
-<p>Name  Affiliation</p>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><strong>Name</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><strong>Affiliation</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Michala Hill <em>(editor)</em></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Cognitics, Inc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Kevin Bentley</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Cognitics, Inc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Ryan Franz</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">FlightSafety Visual Systems</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Bernard Leclerc</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">CAE, Inc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Carl Reed</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Carl Reed &amp; Associates</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">David Graham</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">CAE Inc.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
@@ -1042,66 +1074,7 @@ when it comes to encoding tiles with small quantities of data.  But it does redu
 </div>
 </div>
 <div class="sect1">
-<h2 id="_sample_conversion_tools"><a class="anchor" href="#_sample_conversion_tools"></a>8. Sample Conversion Tools</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Sample conversion tools may be found in the Cognitics GitHub repo located at <a href="https://github.com/Cognitics/cdb-shp-geopackage-convert" class="bare">https://github.com/Cognitics/cdb-shp-geopackage-convert</a>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Warning: Use the sample conversion code at your own risk. It is intended to provide an example on how to convert Shapefiles to GeoPackage in a CDB, and is not an OGC tested application. Make sure you test on a backup copy of your CDB first.</strong></p>
-</div>
-<div class="paragraph">
-<p>The sample converter is written in Python, and uses GDAL (version 2.2.3 or greater) with the Python bindings. Binaries of GDAL can be found at <a href="https://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries" class="bare">https://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries</a>.</p>
-</div>
-<div class="paragraph">
-<p>To use the sample converter tool, use the following Syntax:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Usage: Convert.py &lt;Input Root CDB Directory&gt; &lt;Output Directory for GeoPackage Files&gt;</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The converter starts by calling the function:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>generateMetaFiles.generateMetaFiles(cDBRoot)</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This function scans the CDB to find a list of Shapefiles. It stores a list of all Shapefiles in a file called shapeindex.py. Another file named shapemeta.py is generated with a list of shapefiles and the extents of each file.</p>
-</div>
-<div class="paragraph">
-<p>The shapemeta.py file is not necessary for the conversion, but can be useful for analysis. That block of code can be removed for a faster conversion if it isn&#8217;t needed.</p>
-</div>
-<div class="paragraph">
-<p>Next, the index file is scanned, and each ShapeFile is processed through:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>copyFeaturesFromShapeToGeoPackage(shpFilename,outputGeoPackageFile)</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If the shapefile passed through this function is a feature file, and not a feature class or extended attribute file, the appropriate feature class and extended attributes DBF file (based on Selector2 in the filename) is ready by calling readDBF. All records in each file are read and stored in a dictionary.</p>
-</div>
-<div class="paragraph">
-<p>Next, GDAL is used to create the appropriate GeoPackage file and layers. Then GDAL is used to open the ShapeFile and iterate through each feature. To flatten the feature class records, as each feature is read, any matching feature class records (based on the CNAM attribute) are added to the feature record.</p>
-</div>
-<div class="paragraph">
-<p>After copyFeaturesFromShapeToGeoPackage has completed, the extended attribute DBF file that matches the feature file is read. The appropriate layer is created in the GeoPackage. The name of that layer is identical to the filename of the extended attribute DBF file, without the .dbf extension. Each record in the extended attribute DBF file is read and added to the new layer in the GeoPackage. Each record from the DFB file is copied into the GeoPackage layer.</p>
-</div>
-<div class="paragraph">
-<p>Note that no additional relationships or foreign keys are necessary. The feature attributes that are used to link the features to the Extended Attributes in the GeoPackage are the same as the attributes from the ShapeFile (CEAI,GEAI, and VEAI) and have been renamed to indicate either the Instance or Class level (see Figure 1 in the Flattening the Schema of the Normative document).</p>
-</div>
-<div class="paragraph">
-<p>After each feature ShapeFile has been processed, the conversion is complete. Note that none of the associated ShapeFile or DBF files are removed from the CDB.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_flattening_the_schema"><a class="anchor" href="#_flattening_the_schema"></a>9. Flattening the Schema</h2>
+<h2 id="_flattening_the_schema"><a class="anchor" href="#_flattening_the_schema"></a>8. Flattening the Schema</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The CDB Shapefile standard provides three attribution schemas to represent attribution data.  Those three have been flattened into two for use with GeoPackage.</p>
@@ -1321,7 +1294,7 @@ Record 9 in the extended-level attributes table is a class-level attribute relat
 </div>
 </div>
 <div class="sect1">
-<h2 id="_layer_names_within_a_geopackage"><a class="anchor" href="#_layer_names_within_a_geopackage"></a>10. Layer Names within a GeoPackage</h2>
+<h2 id="_layer_names_within_a_geopackage"><a class="anchor" href="#_layer_names_within_a_geopackage"></a>9. Layer Names within a GeoPackage</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Each GeoPackage file shall contain one and only one feature table. The feature table shall include all attributes (fields) required by the CDB standard (Volume 1, 5.7.1.2. CDB Attribution). The single feature table shall be named identically to the GeoPackage filename (not including the ".gpkg" filename extension). A GeoPackage file may include an optional extended level attribute table. The extended level attribute table shall not contain geometry. The name of the extended level attribute table shall use the CS2 selector shown in Table 2. Table 3 shows the file naming convention.</p>
@@ -1435,6 +1408,9 @@ Extended Attribute Table Name: N13E045_D201_S002_T017_L00_U0_R0</p>
 <div id="img_CDBGpkgFlattenedSchemaforRoads" class="paragraph">
 <p><strong>Figure2. CDB GeoPackage Flattened Schema Road Dataset Example</strong></p>
 </div>
+<div class="paragraph">
+<p>See <a href="https://github.com/opengeospatial/Draft-Best-Practices-Document-Geopackage-Vector-Data-Conversion/blob/master/annex-n.adoc">Annex A: Sample Conversion Tools</a> for information on the use of sample conversion tools found in the <a href="https://github.com/Cognitics/cdb-shp-geopackage-convert">Cognitics GitHub repo</a>.</p>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1490,19 +1466,61 @@ Ensure that there is a conformance class for each requirements class and a test 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_title_normativeinformative"><a class="anchor" href="#_title_normativeinformative"></a>Annex B: Title ( {Normative/Informative} )</h2>
+<h2 id="_sample_conversion_tools_informative"><a class="anchor" href="#_sample_conversion_tools_informative"></a>Annex B: Sample Conversion Tools (Informative)</h2>
 <div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Place other Annex material in sequential annexes beginning with "B" and leave final two annexes for the Revision History and Bibliography
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Sample conversion tools may be found in the Cognitics GitHub repo located at <a href="https://github.com/Cognitics/cdb-shp-geopackage-convert" class="bare">https://github.com/Cognitics/cdb-shp-geopackage-convert</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Warning: Use the sample conversion code at your own risk. It is intended to provide an example on how to convert Shapefiles to GeoPackage in a CDB, and is not an OGC tested application. Make sure you test on a backup copy of your CDB first.</strong></p>
+</div>
+<div class="paragraph">
+<p>The sample converter is written in Python, and uses GDAL (version 2.2.3 or greater) with the Python bindings. Binaries of GDAL can be found at <a href="https://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries" class="bare">https://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries</a>.</p>
+</div>
+<div class="paragraph">
+<p>To use the sample converter tool, use the following Syntax:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Usage: Convert.py &lt;Input Root CDB Directory&gt; &lt;Output Directory for GeoPackage Files&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The converter starts by calling the function:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>generateMetaFiles.generateMetaFiles(cDBRoot)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This function scans the CDB to find a list of Shapefiles. It stores a list of all Shapefiles in a file called shapeindex.py. Another file named shapemeta.py is generated with a list of shapefiles and the extents of each file.</p>
+</div>
+<div class="paragraph">
+<p>The shapemeta.py file is not necessary for the conversion, but can be useful for analysis. That block of code can be removed for a faster conversion if it isn&#8217;t needed.</p>
+</div>
+<div class="paragraph">
+<p>Next, the index file is scanned, and each ShapeFile is processed through:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>copyFeaturesFromShapeToGeoPackage(shpFilename,outputGeoPackageFile)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the shapefile passed through this function is a feature file, and not a feature class or extended attribute file, the appropriate feature class and extended attributes DBF file (based on Selector2 in the filename) is ready by calling readDBF. All records in each file are read and stored in a dictionary.</p>
+</div>
+<div class="paragraph">
+<p>Next, GDAL is used to create the appropriate GeoPackage file and layers. Then GDAL is used to open the ShapeFile and iterate through each feature. To flatten the feature class records, as each feature is read, any matching feature class records (based on the CNAM attribute) are added to the feature record.</p>
+</div>
+<div class="paragraph">
+<p>After copyFeaturesFromShapeToGeoPackage has completed, the extended attribute DBF file that matches the feature file is read. The appropriate layer is created in the GeoPackage. The name of that layer is identical to the filename of the extended attribute DBF file, without the .dbf extension. Each record in the extended attribute DBF file is read and added to the new layer in the GeoPackage. Each record from the DFB file is copied into the GeoPackage layer.</p>
+</div>
+<div class="paragraph">
+<p>Note that no additional relationships or foreign keys are necessary. The feature attributes that are used to link the features to the Extended Attributes in the GeoPackage are the same as the attributes from the ShapeFile (CEAI,GEAI, and VEAI) and have been renamed to indicate either the Instance or Class level (see Figure 1 in the Flattening the Schema of the Normative document).</p>
+</div>
+<div class="paragraph">
+<p>After each feature ShapeFile has been processed, the conversion is complete. Note that none of the associated ShapeFile or DBF files are removed from the CDB.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>

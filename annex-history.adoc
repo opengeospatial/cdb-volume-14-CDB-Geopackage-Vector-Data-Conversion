@@ -4,5 +4,5 @@
 
 [width="90%",options="header"]
 |===
-|Date |Release |Editor | Primary clauses modified |Description|
+|Date |Release |Editor | Primary clauses modified |Description
 |===

@@ -32,5 +32,12 @@ Cognitics, Inc.
 
 All questions regarding this submission should be directed to the editor or the submitters:
 
-Michala Hill  Cognitics, Inc.
-Kevin Bentley Cognitics, inc.
+|===
+|*Name* |*Affiliation*
+|Michala Hill _(editor)_ |Cognitics, Inc.
+|Kevin Bentley |Cognitics, Inc.
+|Ryan Franz |FlightSafety Visual Systems
+|Bernard Leclerc |CAE, Inc.
+|Carl Reed |Carl Reed & Associates
+|David Graham |CAE Inc.
+|===

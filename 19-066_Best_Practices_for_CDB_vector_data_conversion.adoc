@@ -1,4 +1,4 @@
-:Title: OGC Best Practices for Conversion of CDB Vector Data to Geopackage
+:Title: Volume 14 OGC CDB Guidance on Conversion of CDB Shapefiles into CDB GeoPackages (Best Practice)
 :titletext: {Title}
 :doctype: book
 :encoding: utf-8
@@ -15,10 +15,10 @@
 |===
 |{set:cellbgcolor:#FFFFFF}
 |[big]*Open Geospatial Consortium*
-|Submission Date: <yyyy-mm-dd>
-|Approval Date:   <yyyy-mm-dd>
-|Publication Date:   <yyyy-mm-dd>
-|External identifier of this OGC(R) document: http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}
+|Submission Date: 2020-xx-xx
+|Approval Date:   2020-xx-xx
+|Publication Date:   2020-xx-xx
+|External identifier of this OGC(R) document: http://www.opengis.net/doc/BP/cdb-gpkg/{1.2}
 |Internal reference number of this OGC(R) document:    19-066
 |Version: n.n
 |Category: OGC(R) Best Practice
@@ -33,7 +33,7 @@
 [cols = "^", frame = "none", grid = "none"]
 |===
 |*Copyright notice*
-|Copyright (C) <year> Open Geospatial Consortium
+|Copyright (C) 2020 Open Geospatial Consortium
 |To obtain additional rights of use, visit http://www.opengeospatial.org/legal/
 |===
 

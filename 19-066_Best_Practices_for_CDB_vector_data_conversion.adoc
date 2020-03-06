@@ -18,9 +18,9 @@
 |Submission Date: 2020-01-21
 |Approval Date:   2020-xx-xx
 |Publication Date:   2020-xx-xx
-|External identifier of this OGC(R) document: http://www.opengis.net/doc/BP/cdb-gpkg/{1.2}
+|External identifier of this OGC(R) document: http://www.opengis.net/doc/BP/CDB-gpkg/1.2
 |Internal reference number of this OGC(R) document:    19-066
-|Version: n.n
+|Version: 1.2
 |Category: OGC(R) Best Practice
 |Editor:   Michala Hill
 |===

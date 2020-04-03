@@ -1,0 +1,17 @@
+{
+        "0":  {
+                "OGC_doc_number": "19-066",
+                "urn":"http://www.opengis.net/doc/BP/CDB-gpkg/1.2",
+                "title":"Volume 14 OGC CDB Guidance on Conversion of CDB Shapefiles into CDB GeoPackages (Best Practice)",
+                "path":"19-066_Best_Practices_for_CDB_vector_data_conversion.adoc",
+                "options": ["--trace"],
+                "a":[
+                        "data-uri",
+                        "stylesdir=./resources/stylesheets",
+                        "dot=/usr/bin/dot"
+                ],
+                "r":[
+                        "asciidoctor-diagram"
+                ]
+        }
+}

@@ -1,6 +1,6 @@
 [big]*i.     Abstract*
 
-This OGC Best Practices (BP) document describes the conversion process for converting a CDB structured Shapefile into a CDB structured GeoPackage.  This is the companion document to Volume 13: OGC CDB Rules for Encoding CDB Vector Data using GeoPackage (Normative, Optional Extension). Volume 13 defines the requirements and provides CDB specific guidance on using GeoPackage containers in a CDB data store.
+This OGC Best Practice (BP) document describes the conversion process for converting a CDB structured Shapefile into a CDB structured GeoPackage.  This is the companion document to Volume 13: OGC CDB Rules for Encoding CDB Vector Data using GeoPackage (Normative, Optional Extension). Volume 13 defines the requirements and provides CDB specific guidance on using GeoPackage containers in a CDB data store.
 
 [big]*ii.    Keywords*
 

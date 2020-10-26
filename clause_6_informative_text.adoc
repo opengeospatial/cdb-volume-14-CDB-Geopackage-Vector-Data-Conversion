@@ -4,31 +4,31 @@ OGC CDB and GeoPackage are both standards increasingly used in M&S and GEOINT, b
 
 Four approaches were testing in the Interoperability Experiment:
 
-• Experiment 1: Conversion of Shapefiles in one or more CDB data stores into GeoPackages as required for Experiments 2, 3, and/or 4.
-• Experiment 2: One-to-one conversion of a Shapefile into a GeoPackage.
-• Experiment 3: Store each CDB Level of Detail (LOD) as a layer in GeoPackage.
+• Experiment 1: Conversion of Shapefiles in one or more CDB data stores into GeoPackages as required for Experiments 2, 3, and/or 4;
+• Experiment 2: One-to-one conversion of a Shapefile into a GeoPackage;
+• Experiment 3: Store each CDB Level of Detail (LOD) as a layer in GeoPackage; and
 • Experiment 4: Store each Geocell of Vector Data as a layer in GeoPackage.
 
-Experiment 2 was further broken down into Options 1a – 1d. Each experiment offered its own set of potential advantages, disadvantages, and lessons learned. 
+Experiment 2 was further broken down into Options 1a – 1d. Each experiment offered its own set of potential advantages, disadvantages, and lessons learned.
 
 Utilizing Option 1c:
 
-•	Fully flattened instance, class, and extended level attribute tables
-•	There is a 4:1 to 7:1 reduction in the number of files.
-•	Some duplication of data, resulting in larger files.
-•	There is one layer per GeoPackage.
-•	The Feature Class and Extended Attributes are populated for each feature.
-•	Full “Off the Shelf” GeoPackage software compatibility.
+•	Fully flattened instance, class, and extended level attribute tables;
+•	There is a 4:1 to 7:1 reduction in the number of files;
+•	Some duplication of data, resulting in larger files;
+•	There is one layer per GeoPackage;
+•	The Feature Class and Extended Attributes are populated for each feature;
+•	Full “Off the Shelf” GeoPackage software compatibility; and
 •	Best Experiment 2 option in terms of file size and performance time.
 
 Utilizing Option 1d:
 
-•	Flatten CDB standard instance and class attribute – maximum GIS tools compatibility
-•	“Off the Shelf” GeoPackage software compatibility for CDB standard attributes.
-•	Table for extended attributes using Related Tables GeoPackage extension
-•	This approach utilizes a standard normalized relational database design, utilizing foreign keys.
-•	Some duplication of data, resulting in larger files.
-•	There is one layer per GeoPackage.
+•	Flatten CDB standard instance and class attribute – maximum GIS tools compatibility;
+•	“Off the Shelf” GeoPackage software compatibility for CDB standard attributes;
+•	Table for extended attributes using Related Tables GeoPackage extension;
+•	This approach utilizes a standard normalized relational database design, utilizing foreign keys;
+•	Some duplication of data, resulting in larger files;
+•	There is one layer per GeoPackage; and
 •	The Feature Class and Extended Attributes are populated for each feature.
 
 The final method selected for conversion of a Shapefile CDB to a GeoPackage CDB is a hybrid of Options 1c and 1d. Because “Off the Shelf” GeoPackage software will not be aware of the class and extended level attributes, we needed to “flatten” the class level attributes with the instance level attributes.  It was not possible to effectively flatten the extended level attributes at this time, and those will remain in a separate table with regular table relationships.  The decision was made not to use the Related Tables GeoPackage extension.
@@ -50,8 +50,8 @@ As detailed in the following table of GeoPackage Geometry Codes(Table 30 of Appe
 |===
 |*Code* |*Name*
 |0 | GEOMETRY
-|1 | POINT 
-|2 | LINESTRING 
+|1 | POINT
+|2 | LINESTRING
 |3 | POLYGON
 |4 | MULTIPOIPNT
 |5 | MULTILINESTRING

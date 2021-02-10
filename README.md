@@ -1,4 +1,4 @@
-# Best Practice template
+# OGC CDB Volume 14 Conversion of Shapefiles into OGC Geopackage
 
 ## Content
 

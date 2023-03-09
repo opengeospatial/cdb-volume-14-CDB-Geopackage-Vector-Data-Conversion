@@ -1,3 +1,7 @@
+Notice to public contributors:
+
+The contributor understands that any contributions, if accepted by the OGC Membership, shall be incorporated into the relevant OGC standards and best practices documents and that all copyright and intellectual property shall be vested in the OGC.
+
 # OGC CDB Volume 14 Conversion of Shapefiles into OGC Geopackage
 
 ## Content

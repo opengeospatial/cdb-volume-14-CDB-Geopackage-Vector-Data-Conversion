@@ -5,4 +5,6 @@
 [width="90%",options="header"]
 |===
 |Date |Release |Editor | Primary clauses modified |Description
+||1.2|M. Hill|All|Initial Release
+|2023-08-01|1.3|D. Graham|Front Matter; History|Editorial changes only for 1.3
 |===

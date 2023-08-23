@@ -29,6 +29,10 @@ The following organizations submitted this Document to the Open Geospatial Conso
 * Cognitics, Inc.
 * CAE Inc.
 
+
+[red]#*_Placeholder# for the list of CDB SWG Voting Members who cast a ballot in the SWG eVote approving the draft document for submission to the OAB and request for public comment_*
+
+
 [big]*v.     Submitters*
 
 All questions regarding this submission should be directed to the editor or the submitters:
@@ -38,7 +42,6 @@ All questions regarding this submission should be directed to the editor or the 
 |Michala Hill _(editor)_ |Cognitics, Inc.
 |Kevin Bentley |Cognitics, Inc.
 |Ryan Franz |FlightSafety Visual Systems
-|Bernard Leclerc |CAE, Inc.
 |Carl Reed |Carl Reed & Associates
 |David Graham |CAE Inc.
 |===

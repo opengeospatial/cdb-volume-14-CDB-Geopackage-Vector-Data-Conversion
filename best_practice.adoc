@@ -1,5 +1,5 @@
 :Title: Volume 14 OGC CDB Guidance on Conversion of CDB Shapefiles into CDB GeoPackages (Best Practice)
-:titletext: {Title}
+:titletext: Volume 14 OGC CDB Guidance on Conversion of CDB Shapefiles into CDB GeoPackages (Best Practice)
 :doctype: book
 :encoding: utf-8
 :lang: en
@@ -10,11 +10,13 @@
 :sectanchors:
 :source-highlighter: coderay
 
+= {title}
+
 <<<
 [cols = ">",frame = "none",grid = "none"]
 |===
 |{set:cellbgcolor:#FFFFFF}
-|[big]*Open Geospatial Consortium*
+|
 |Submission Date: 2023-XX-XX
 |Approval Date:   2023-XX-XX
 |Publication Date:   2023-XX-XX

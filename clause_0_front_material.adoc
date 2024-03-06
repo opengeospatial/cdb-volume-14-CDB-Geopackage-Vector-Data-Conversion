@@ -28,6 +28,12 @@ The following organizations submitted this Document to the Open Geospatial Conso
 
 * Cognitics, Inc.
 * CAE Inc.
+* Carl Reed & Associates
+* UK Met Office
+* Ecere Corporation
+* The Joint Staff
+* FSI International Visual Systems
+* SimBlocks LLC
 
 [big]*v.     Submitters*
 
@@ -35,10 +41,9 @@ All questions regarding this submission should be directed to the editor or the 
 
 |===
 |*Name* |*Affiliation*
-|Michala Hill _(editor)_ |Cognitics, Inc.
+|Michala Hill |Cognitics, Inc.
 |Kevin Bentley |Cognitics, Inc.
 |Ryan Franz |FlightSafety Visual Systems
-|Bernard Leclerc |CAE, Inc.
 |Carl Reed |Carl Reed & Associates
 |David Graham |CAE Inc.
 |===

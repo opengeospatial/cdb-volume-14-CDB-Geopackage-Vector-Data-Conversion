@@ -3,9 +3,9 @@ The following normative documents contain provisions that, through reference in 
 
 ISO / TC 211: ISO 19115-1:2014 Geographic information — Metadata — Part 1: Fundamentals (2014)
 
-OGC: OGC 15-113r5, Volume 1: OGC CDB Core Standard: Model and Physical Data Store Structure (2017)
+OGC: OGC 15-113r6, Volume 1: OGC CDB Core Standard: Model and Physical Data Store Structure
 
-OGC: OGC 16-070r3, Volume 4: OGC CDB Best Practice use of Shapefiles for Vector Data Storage (2017)
+OGC: OGC 16-070r4, Volume 4: OGC CDB Best Practice use of Shapefiles for Vector Data Storage
 
 OGC: OGC 12-128r15, OGC GeoPackage Encoding Standard - with Corrigendum (2018)
 
